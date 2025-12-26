@@ -78,7 +78,7 @@ export default function ProblemSolutionMockup() {
                   <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
                 </div>
                 <div className="flex-1 text-center text-sm text-slate-600 font-mono">
-                  https://app.lobocon.co/dashboard
+                  app.lobocon.co/dashboard
                 </div>
               </div>
 
