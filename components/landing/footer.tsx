@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Linkedin, Twitter } from "lucide-react";
 
 export default function Footer() {
@@ -69,12 +70,12 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/about"
                   className="text-slate-400 hover:text-slate-50 transition-colors"
                 >
-                  About Us
-                </a>
+                  Our Story
+                </Link>
               </li>
               <li>
                 <a
@@ -148,7 +149,7 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="pt-6 sm:pt-10 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs sm:text-sm text-slate-400">
-            © 2025 Lobocon. All rights reserved.
+            © 2025 Nexaslab Inc. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a
