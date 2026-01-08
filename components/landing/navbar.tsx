@@ -80,7 +80,7 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center space-x-3">
             <a
-              href="#"
+              href="https://app.lobocon.co/login"
               className="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1 transition-colors"
             >
               Sign in
