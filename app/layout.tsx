@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Lobocon - Construction Project Management Software | Kenya & Africa",
+  title: "Lobocon - Construction Project Management Software",
   description:
     "All-in-one construction management software for contractors, quantity surveyors, and project managers. Track BOQs, schedules, cash flow, labor, and budgets in real-time. Affordable alternative to Procore, Autodesk, and MS Project built for African construction companies.",
   keywords: [
@@ -121,7 +123,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lobocon - Construction Project Management Software",
+    title: "Lobocon - Construction Project Management Simplified",
     description:
       "All-in-one construction management for African contractors. Track BOQs, schedules, cash flow, and teams. Affordable Procore alternative.",
     images: ["/og-image.png"],
@@ -161,6 +163,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
 
       {/* Google Analytics */}
