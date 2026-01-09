@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,25 +14,85 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Lobocon - Construction Project Management Simplified",
+  title: "Lobocon - Construction Project Management Software | Kenya & Africa",
   description:
-    "Know if your project will make money before it's too late. Complete project management software for construction companies. Plan schedules, track cash flow, manage teams, and deliver profitable projects.",
+    "All-in-one construction management software for contractors, quantity surveyors, and project managers. Track BOQs, schedules, cash flow, labor, and budgets in real-time. Affordable alternative to Procore, Autodesk, and MS Project built for African construction companies.",
   keywords: [
+    // Core product terms
     "construction management software",
-    "construction project management",
+    "construction project management software",
+    "construction ERP software",
+    "construction management system",
+    "construction software Kenya",
+    "construction software Africa",
+
+    // Feature-specific keywords
     "BOQ software",
+    "bill of quantities software",
+    "construction BOQ management",
     "construction scheduling software",
-    "project cash flow management",
+    "construction cash flow management",
+    "construction budget tracking",
+    "construction cost control software",
     "construction labor management",
-    "construction budgeting software",
-    "project profitability tracking",
-    "construction ERP",
-    "building project management",
     "construction resource allocation",
-    "site management software",
+    "construction progress tracking",
     "construction financial management",
-    "project cost control",
     "construction reporting software",
+    "construction document management",
+    "construction invoice management",
+    "construction time tracking",
+
+    // Competitor alternative keywords
+    "Procore alternative",
+    "Procore alternative Africa",
+    "Procore alternative Kenya",
+    "affordable construction management software",
+    "construction software for small contractors",
+    "construction software for African contractors",
+    "Autodesk alternative",
+    "MS Project construction alternative",
+
+    // Job role keywords
+    "quantity surveyor software",
+    "contractor management software",
+    "project manager software construction",
+    "site manager software",
+    "construction estimating software",
+    "QS software Kenya",
+
+    // Use case keywords
+    "residential construction software",
+    "commercial construction software",
+    "infrastructure project management",
+    "building construction software",
+    "construction company software",
+    "general contractor software",
+    "subcontractor management software",
+
+    // Regional keywords
+    "construction software Kenya",
+    "construction software Nairobi",
+    "construction management software Africa",
+    "construction project software East Africa",
+
+    // Pain point keywords
+    "construction project profitability",
+    "track construction project costs",
+    "construction project visibility",
+    "construction collaboration software",
+    "real-time construction tracking",
+    "construction budget overrun prevention",
+    "construction cash flow tracking",
+
+    // Technology/standards keywords
+    "SMM compliance software",
+    "Standard Method of Measurement software",
+    "construction measurement standards",
+    "PMI construction software",
+    "cloud construction software",
+    "mobile construction app",
+    "construction software with BOQ",
   ],
   authors: [{ name: "Nexaslab" }],
   creator: "Nexaslab",
@@ -44,24 +105,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://lobocon.co",
-    title: "Lobocon - Construction Project Management Simplified",
+    title:
+      "Lobocon - Construction Project Management Software | Kenya & Africa",
     description:
-      "Know if your project will make money before it's too late. Complete project management for construction companies. Plan schedules, track cash flow, manage teams, and deliver profitable projects.",
+      "All-in-one construction management software built for African contractors. Track BOQs, schedules, cash flow, and budgets in real-time. Affordable alternative to Procore and Autodesk.",
     siteName: "Lobocon",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Lobocon - Construction Project Management Simplified",
+        alt: "Lobocon - Construction Project Management Software",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lobocon - Construction Project Management Simplified",
+    title: "Lobocon - Construction Project Management Software",
     description:
-      "Complete project management for construction companies. Track budgets, manage schedules, monitor cash flow, and deliver profitable projects.",
+      "All-in-one construction management for African contractors. Track BOQs, schedules, cash flow, and teams. Affordable Procore alternative.",
     images: ["/og-image.png"],
     creator: "@lobocon",
   },
@@ -75,9 +137,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  verification: {
-    google: "your-google-verification-code",
   },
   category: "technology",
 };
@@ -103,6 +162,20 @@ export default function RootLayout({
       >
         {children}
       </body>
+
+      {/* Google Analytics */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-DGC5DN5K95"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-DGC5DN5K95');
+        `}
+      </Script>
     </html>
   );
 }
