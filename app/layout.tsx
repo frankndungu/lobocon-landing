@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Lobocon - Construction Project Management Software",
+  title: "Lobocon - Construction Project Management Simplified",
   description:
     "All-in-one construction management software for contractors, quantity surveyors, and project managers. Track BOQs, schedules, cash flow, labor, and budgets in real-time. Affordable alternative to Procore, Autodesk, and MS Project built for African construction companies.",
   keywords: [
@@ -107,8 +107,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://lobocon.co",
-    title:
-      "Lobocon - Construction Project Management Software | Kenya & Africa",
+    title: "Lobocon - Construction Project Management Software",
     description:
       "All-in-one construction management software built for African contractors. Track BOQs, schedules, cash flow, and budgets in real-time. Affordable alternative to Procore and Autodesk.",
     siteName: "Lobocon",
@@ -123,7 +122,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lobocon - Construction Project Management Simplified",
+    title: "Lobocon - Construction Project Management Software",
     description:
       "All-in-one construction management for African contractors. Track BOQs, schedules, cash flow, and teams. Affordable Procore alternative.",
     images: ["/og-image.png"],
