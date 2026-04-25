@@ -92,7 +92,6 @@
 .nav-item {
   position: relative;
 }
-/* Bridge fills the gap between trigger and dropdown so hover doesn't break */
 .nav-item::after {
   content: "";
   position: absolute;
@@ -224,6 +223,29 @@
     0 4px 16px rgba(15, 23, 42, 0.08);
   overflow: hidden;
   opacity: 0;
+}
+
+/* ── Hero floating cards ── */
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(var(--rotation));
+  }
+  50% {
+    transform: translateY(-12px) rotate(var(--rotation));
+  }
+  100% {
+    transform: translateY(0px) rotate(var(--rotation));
+  }
+}
+.floating-card {
+  animation: float 6s ease-in-out infinite;
+  opacity: 1;
+}
+.delay-1 {
+  animation-delay: 1.5s;
+}
+.delay-2 {
+  animation-delay: 3s;
 }
 
 /* ── Card animations ── */
