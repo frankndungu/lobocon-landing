@@ -1574,7 +1574,7 @@ export default function Product() {
   ]);
 
   return (
-    <section className="w-full max-w-345 mx-auto px-4 sm:px-6 lg:px-14 py-10 sm:py-16 lg:py-20">
+    <section className="w-full max-w-345 mx-auto px-4 sm:px-6 lg:px-14 pt-10 sm:pt-16 lg:pt-20 pb-6 sm:pb-8 lg:pb-10">
       <div className="mb-8 sm:mb-14">
         <p className="text-[11px] font-bold tracking-[0.2em] text-slate-900 uppercase mb-4">
           Platform
