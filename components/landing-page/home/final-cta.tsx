@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function FinalCTA() {
   return (
     <>
@@ -154,12 +156,12 @@ export default function FinalCTA() {
               it&apos;s too late to act.
             </p>
 
-            <a
-              href="#"
+            <Link
+              href="/session"
               className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white text-[14px] font-bold px-8 py-4 rounded-lg transition-colors"
             >
               Book a session
-            </a>
+            </Link>
           </div>
         </div>
       </section>

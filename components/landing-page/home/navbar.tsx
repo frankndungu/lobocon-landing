@@ -993,7 +993,7 @@ export default function Navbar() {
 
         <div className="px-4 py-5 border-t border-slate-100 flex flex-col gap-3">
           <Link
-            href="/book-a-session"
+            href="/session"
             className="w-full py-3.5 rounded-full bg-slate-900 text-white text-[15px] font-semibold text-center hover:bg-slate-800 transition-colors"
           >
             Book a session
@@ -1194,7 +1194,7 @@ export default function Navbar() {
             Log in
           </a>
           <Link
-            href="/book-a-session"
+            href="/session"
             className="px-6 py-2.5 rounded-full bg-slate-900 text-white text-[14px] font-semibold hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/20"
           >
             Book a session

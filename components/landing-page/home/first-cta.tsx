@@ -1,7 +1,8 @@
+import Link from "next/link";
+
 const FirstCTA = () => {
   return (
     <>
-      {/* Top hatch  */}
       <div className="hatch" />
 
       <section className="w-full max-w-345 mx-auto">
@@ -18,24 +19,23 @@ const FirstCTA = () => {
               <br />
               of truth.
             </h2>
-            <p className="text-[15px] text-slate-800 leading-relaxed mb-10 max-w-sm">
+            <p className="text-[15px] text-slate-700 leading-relaxed mb-10 max-w-sm">
               Replace your BOQ spreadsheets, site WhatsApp groups, and
               end-of-month reports with a single platform built for
               construction.
             </p>
             <div className="flex items-center gap-4 flex-wrap">
-              <a
-                href="#"
+              <Link
+                href="/session"
                 className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white text-[13px] font-bold px-7 py-3.5 rounded-lg transition-colors"
               >
                 Book a session
-              </a>
+              </Link>
             </div>
           </div>
 
           {/* RIGHT: Isometric illustration */}
           <div className="relative flex items-center justify-center px-8 py-16 lg:py-20 overflow-hidden bg-slate-50/40">
-            {/* Dot grid */}
             <svg
               className="absolute inset-0 w-full h-full"
               xmlns="http://www.w3.org/2000/svg"
@@ -53,9 +53,8 @@ const FirstCTA = () => {
               <rect width="100%" height="100%" fill="url(#cta-dots)" />
             </svg>
 
-            {/* Isometric composition */}
             <div className="relative w-full max-w-115 h-55 sm:h-65">
-              {/* Ghost cube — far left */}
+              {/* Ghost cube */}
               <svg
                 className="absolute ghost-cube"
                 style={{ left: "2%", top: "18%", width: "130px" }}
@@ -88,7 +87,7 @@ const FirstCTA = () => {
                 />
               </svg>
 
-              {/* Cube 1: Emerald — large, center-left */}
+              {/* Cube 1: Emerald */}
               <svg
                 className="absolute cube-a"
                 style={{ left: "22%", top: "5%", width: "160px" }}
@@ -138,7 +137,7 @@ const FirstCTA = () => {
                 />
               </svg>
 
-              {/* Cube 2: Amber — medium, center-right */}
+              {/* Cube 2: Amber */}
               <svg
                 className="absolute cube-b"
                 style={{ left: "46%", top: "28%", width: "128px" }}
@@ -188,7 +187,7 @@ const FirstCTA = () => {
                 />
               </svg>
 
-              {/* Cube 3: Violet — small, front-right */}
+              {/* Cube 3: Violet */}
               <svg
                 className="absolute cube-c"
                 style={{ left: "62%", top: "50%", width: "100px" }}
@@ -252,7 +251,7 @@ const FirstCTA = () => {
                 style={{ left: "14%", top: "3%" }}
               >
                 <div className="w-1.5 h-1.5 rounded-sm bg-emerald-600 shrink-0" />
-                <span className="text-[9px] font-bold text-slate-600 uppercase tracking-wider">
+                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">
                   Commercial
                 </span>
               </div>
@@ -261,7 +260,7 @@ const FirstCTA = () => {
                 style={{ left: "44%", top: "24%" }}
               >
                 <div className="w-1.5 h-1.5 rounded-sm bg-amber-500 shrink-0" />
-                <span className="text-[9px] font-bold text-slate-600 uppercase tracking-wider">
+                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">
                   Execution
                 </span>
               </div>
@@ -270,7 +269,7 @@ const FirstCTA = () => {
                 style={{ left: "63%", top: "82%" }}
               >
                 <div className="w-1.5 h-1.5 rounded-sm bg-violet-600 shrink-0" />
-                <span className="text-[9px] font-bold text-slate-600 uppercase tracking-wider">
+                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">
                   Reporting
                 </span>
               </div>
@@ -279,7 +278,6 @@ const FirstCTA = () => {
         </div>
       </section>
 
-      {/* Bottom hatch only */}
       <div className="hatch" />
     </>
   );

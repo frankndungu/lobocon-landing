@@ -54,7 +54,7 @@ export default function Hero() {
         </p>
         <div className="mt-7 flex flex-col gap-3 w-full">
           <Link
-            href="/book-a-session"
+            href="/session"
             className="w-full px-8 py-3.5 rounded-full bg-slate-900 text-white font-semibold text-sm text-center hover:bg-slate-800 transition-colors shadow-xl shadow-slate-900/20"
           >
             Book a working session
@@ -167,7 +167,7 @@ export default function Hero() {
         </p>
         <div className="mt-10 flex flex-row gap-4">
           <Link
-            href="/book-a-session"
+            href="/session"
             className="px-8 py-3.5 rounded-full bg-slate-900 text-white font-semibold text-sm text-center hover:bg-slate-800 transition-colors shadow-xl shadow-slate-900/20"
           >
             Book a working session
@@ -277,7 +277,7 @@ export default function Hero() {
           </p>
           <div className="mt-12 flex items-center gap-4">
             <Link
-              href="/book-a-session"
+              href="/session"
               className="px-8 py-3.5 rounded-full bg-slate-900 text-white font-semibold hover:bg-slate-800 transition-colors shadow-xl shadow-slate-900/20 text-sm"
             >
               Book a working session
