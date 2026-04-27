@@ -43,6 +43,18 @@ const CARDS = [
   },
 ];
 
+const TAG_COLORS: Record<string, string> = {
+  Tutorial: "bg-blue-50 text-blue-700 border border-blue-100",
+  Blog: "bg-cyan-50 text-cyan-700 border border-cyan-100",
+  Webinar: "bg-fuchsia-50 text-fuchsia-700 border border-fuchsia-100",
+  Scheduling: "bg-emerald-50 text-emerald-700 border border-emerald-100",
+  Commercial: "bg-amber-50 text-amber-700 border border-amber-100",
+  BOQ: "bg-amber-50 text-amber-700 border border-amber-100",
+  EVM: "bg-indigo-50 text-indigo-700 border border-indigo-100",
+  Reporting: "bg-violet-50 text-violet-700 border border-violet-100",
+  Finance: "bg-emerald-50 text-emerald-700 border border-emerald-100",
+};
+
 export default function Insights() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const isDown = useRef(false);
@@ -123,7 +135,10 @@ export default function Insights() {
                     </h3>
                     <div className="flex gap-2 flex-wrap">
                       {card.tags.map((tag) => (
-                        <span key={tag} className="tag">
+                        <span
+                          key={tag}
+                          className={`inline-block px-3 py-1 rounded text-[11px] font-semibold ${TAG_COLORS[tag] ?? "bg-slate-100 text-slate-600 border border-slate-200"}`}
+                        >
                           {tag}
                         </span>
                       ))}

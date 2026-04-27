@@ -71,7 +71,7 @@ export default function Integrations() {
                     <span
                       style={{
                         fontSize: "9px",
-                        fontWeight: 600,
+                        fontWeight: 400,
                         color: "#ffff",
                         letterSpacing: "0.04em",
                         whiteSpace: "nowrap",

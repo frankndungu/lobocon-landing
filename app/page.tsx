@@ -7,6 +7,8 @@ import IsoShapes from "@/components/landing-page/home/iso-shapes";
 import FirstCTA from "@/components/landing-page/home/first-cta";
 import Integrations from "@/components/landing-page/home/integrations";
 import Insights from "@/components/landing-page/home/insights";
+import FinalCTA from "@/components/landing-page/home/final-cta";
+import Footer from "@/components/landing-page/home/footer";
 
 export default function LoboconLanding() {
   return (
@@ -21,6 +23,8 @@ export default function LoboconLanding() {
         <FirstCTA />
         <Integrations />
         <Insights />
+        <FinalCTA />
+        <Footer />
       </div>
     </>
   );
