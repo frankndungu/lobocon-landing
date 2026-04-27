@@ -141,16 +141,17 @@ export default function FinalCTA() {
 
           {/* Center content */}
           <div className="relative z-10 flex flex-col items-center justify-center text-center px-8 py-24 lg:py-32 max-w-3xl mx-auto">
-            <h2 className="text-[36px] sm:text-[48px] lg:text-[58px] font-black text-slate-900 leading-[1.05] tracking-[-0.025em] mb-6">
-              Connect your QS,
+            <h2 className="text-[36px] sm:text-[48px] lg:text-[50px] font-black text-slate-900 leading-[1.05] tracking-[-0.025em] mb-6">
+              Stop Hoping Your Projects
               <br />
-              site, and finance
+              Make Money.
               <br />
-              teams.
+              Know.
             </h2>
             <p className="text-[16px] sm:text-[17px] text-slate-700 leading-relaxed mb-10 max-w-md">
-              Lobocon is the missing piece that brings your BOQ, schedule, and
-              cash flow together so you can build with confidence.
+              Lobocon is the missing piece that will help you know your CPI,
+              cash position, and schedule variance in real time, not when
+              it&apos;s too late to act.
             </p>
 
             <a
