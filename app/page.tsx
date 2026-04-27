@@ -5,6 +5,8 @@ import SocialProof from "@/components/landing-page/home/social-proof";
 import Product from "@/components/landing-page/home/product";
 import IsoShapes from "@/components/landing-page/home/iso-shapes";
 import FirstCTA from "@/components/landing-page/home/first-cta";
+import Integrations from "@/components/landing-page/home/integrations";
+import Insights from "@/components/landing-page/home/insights";
 
 export default function LoboconLanding() {
   return (
@@ -17,6 +19,8 @@ export default function LoboconLanding() {
         <Product />
         <IsoShapes />
         <FirstCTA />
+        <Integrations />
+        <Insights />
       </div>
     </>
   );
