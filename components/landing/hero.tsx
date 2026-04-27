@@ -41,8 +41,8 @@ const Badge = ({ label }: { label: string }) => (
 export default function Hero() {
   return (
     <section className="w-full">
-      {/* ── Mobile (< 640px) ── */}
-      <div className="sm:hidden px-5 pt-12 pb-14 flex flex-col items-center text-center">
+      {/* Mobile */}
+      <div className="sm:hidden px-5 pt-12 pb-14 flex flex-col items-center text-center ">
         <Badge label="The connected construction platform" />
         <h1 className="text-[34px] font-black text-slate-900 tracking-tight leading-[1.05]">
           Construction intelligence
@@ -59,7 +59,6 @@ export default function Hero() {
           >
             Book a working session
           </Link>
-
           <a
             href="mailto:sales@lobocon.co"
             className="w-full px-8 py-3.5 rounded-full border border-slate-200 text-slate-900 font-semibold text-sm text-center hover:bg-slate-50 transition-colors"
@@ -149,8 +148,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Tablet (640px–1023px) ── */}
-      <div className="hidden sm:flex lg:hidden flex-col items-center text-center w-full px-8 md:px-20 pt-16 pb-20">
+      {/* Tablet */}
+      <div className="hidden sm:flex lg:hidden flex-col items-center text-center w-full px-8 md:px-20 pt-16 pb-20 ">
         <Badge label="The connected construction platform" />
         <h1
           className="w-full font-black text-slate-900 tracking-tight leading-[1.05]"
@@ -173,7 +172,6 @@ export default function Hero() {
           >
             Book a working session
           </Link>
-
           <a
             href="mailto:sales@lobocon.co"
             className="px-8 py-3.5 rounded-full border border-slate-200 text-slate-900 font-semibold text-sm text-center hover:bg-slate-50 transition-colors"
@@ -261,9 +259,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Desktop (1024px+) ── */}
+      {/* Desktop */}
       <div className="hidden lg:block overflow-hidden">
-        {/* Text content — sits above the image container in normal flow */}
         <div className="flex flex-col items-center text-center px-5 md:px-10 lg:px-16 pt-16 relative z-10">
           <Badge label="The connected construction platform" />
           <h1 className="text-[76px] font-black text-slate-900 tracking-tight max-w-5xl leading-[1.05]">
@@ -285,7 +282,6 @@ export default function Hero() {
             >
               Book a working session
             </Link>
-
             <a
               href="mailto:sales@lobocon.co"
               className="px-8 py-3.5 rounded-full border border-slate-200 text-slate-900 font-semibold hover:bg-slate-50 transition-colors text-sm"
@@ -295,29 +291,25 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* 3D image + floating cards — fixed height container below text */}
         <div
-          className="relative w-full max-w-6xl mx-auto mt-10 pb-4"
-          style={{ height: "640px" }}
+          className="relative w-full max-w-6xl mx-auto mt-10 pb-8"
+          style={{ height: "780px" }}
         >
           <div className="absolute inset-0 border border-dashed border-slate-100 rounded-[100%] top-1/2 -translate-y-1/2 scale-125 opacity-60 pointer-events-none" />
           <div className="absolute inset-0 border border-dashed border-slate-100 rounded-[100%] top-1/2 -translate-y-1/2 scale-[0.85] opacity-60 rotate-12 pointer-events-none" />
 
-          {/* Center 3D image */}
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none"
-            style={{ width: "780px", height: "780px" }}
+            style={{ width: "880px", height: "880px" }}
           >
-            <div className="absolute inset-0 rounded-full bg-blue-50/40 blur-3xl scale-75" />
+            <div className="absolute inset-0 rounded-full bg-blue-50/20 blur-2xl scale-50 z-0" />
             <img
               src="https://res.cloudinary.com/kwishi/image/upload/v1776147434/download_huod9l.png"
               alt="Construction Site 3D"
               className="w-full h-full object-contain relative z-10"
-              style={{ filter: "drop-shadow(0 40px 80px rgba(15,23,42,0.10))" }}
             />
           </div>
 
-          {/* Floating card — top left */}
           <div
             className="floating-card absolute left-10 top-12 bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-[0_8px_30px_rgba(15,23,42,0.08)] border border-slate-200 flex flex-col gap-4 z-20 pointer-events-none"
             style={
@@ -325,7 +317,7 @@ export default function Hero() {
                 "--rotation": "-3deg",
                 minWidth: "190px",
                 opacity: 1,
-              } as React.CSSProperties
+              } as React.CSSProperties & { "--rotation": string }
             }
           >
             <div>
@@ -359,15 +351,14 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Floating card — bottom left */}
           <div
-            className="floating-card delay-1 absolute left-24 bottom-12 bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-[0_8px_30px_rgba(15,23,42,0.08)] border border-slate-200 flex flex-col z-20 pointer-events-none"
+            className="floating-card delay-1 absolute left-24 bottom-16 bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-[0_8px_30px_rgba(15,23,42,0.08)] border border-slate-200 flex flex-col z-20 pointer-events-none"
             style={
               {
                 "--rotation": "2.5deg",
                 minWidth: "220px",
                 opacity: 1,
-              } as React.CSSProperties
+              } as React.CSSProperties & { "--rotation": string }
             }
           >
             <p className="text-[10px] font-bold text-slate-600 uppercase tracking-wide mb-2">
@@ -389,7 +380,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Floating card — top right */}
           <div
             className="floating-card delay-2 absolute right-14 top-20 bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-[0_8px_30px_rgba(15,23,42,0.08)] border border-slate-200 flex flex-col gap-3 z-20 pointer-events-none"
             style={
@@ -397,7 +387,7 @@ export default function Hero() {
                 "--rotation": "-2deg",
                 minWidth: "220px",
                 opacity: 1,
-              } as React.CSSProperties
+              } as React.CSSProperties & { "--rotation": string }
             }
           >
             <div>

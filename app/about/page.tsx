@@ -1,7 +1,6 @@
 import Navbar from "@/components/landing/navbar";
 import AboutHero from "@/components/landing/about/about-hero";
 import ProblemSolutionMockup from "@/components/landing/about/problem-solution-mockup";
-import Footer from "@/components/landing/footer";
 import LaborTrackingMockup from "@/components/landing/about/labor-tracking-mockup";
 import MissionVision from "@/components/landing/about/mission-vision";
 import JourneyTimeline from "@/components/landing/about/journey-timeline";
@@ -22,7 +21,6 @@ export default function AboutPage() {
         <EarlyTraction />
         <TeamSection />
         <AboutCTA />
-        <Footer />
       </div>
     </main>
   );
