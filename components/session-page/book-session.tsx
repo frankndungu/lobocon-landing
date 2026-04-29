@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL!;
 
 const Logo = () => (
   <svg
@@ -92,6 +94,47 @@ const ChevronDown = () => (
 export default function BookASession() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rafRef = useRef<number | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    companySize: "",
+    companyName: "",
+    website: "",
+    source: "",
+    challenge: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
+  ) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/crm", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("CRM submission failed");
+      window.location.href = CALENDLY_URL;
+    } catch {
+      setError(
+        "Something went wrong. Please try again or email us at sales@lobocon.co",
+      );
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -99,7 +142,6 @@ export default function BookASession() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
     const context = ctx;
-
     let W = 0;
     let H = 0;
 
@@ -130,7 +172,6 @@ export default function BookASession() {
       const dy = s * 0.5;
       const hBase = s * 0.4;
       const hRoof = s * 0.55;
-
       context.save();
       if (!col) {
         context.globalAlpha = 0.22;
@@ -227,12 +268,10 @@ export default function BookASession() {
     }
 
     let t0: number | null = null;
-
     function animate(ts: number) {
       if (!t0) t0 = ts;
       const t = (ts - t0) / 1000;
       context.clearRect(0, 0, W, H);
-
       context.fillStyle = "rgba(52,211,153,0.1)";
       for (let gx = 0; gx < W; gx += 24) {
         for (let gy = 0; gy < H; gy += 24) {
@@ -241,7 +280,6 @@ export default function BookASession() {
           context.fill();
         }
       }
-
       const vg = context.createRadialGradient(
         W * 0.5,
         H * 0.5,
@@ -254,26 +292,21 @@ export default function BookASession() {
       vg.addColorStop(1, "rgba(2,44,34,0.5)");
       context.fillStyle = vg;
       context.fillRect(0, 0, W, H);
-
       SHAPES.forEach((c) =>
         drawPyramid(c.cx, c.cy, c.s, c.col, t, c.spd, c.ph),
       );
-
       const topMask = context.createLinearGradient(0, 0, 0, H * 0.32);
       topMask.addColorStop(0, "rgba(6,78,59,0.82)");
       topMask.addColorStop(1, "rgba(6,78,59,0)");
       context.fillStyle = topMask;
       context.fillRect(0, 0, W, H * 0.32);
-
       const botMask = context.createLinearGradient(0, H * 0.82, 0, H);
       botMask.addColorStop(0, "rgba(6,78,59,0)");
       botMask.addColorStop(1, "rgba(6,78,59,0.85)");
       context.fillStyle = botMask;
       context.fillRect(0, H * 0.82, W, H * 0.18);
-
       rafRef.current = requestAnimationFrame(animate);
     }
-
     rafRef.current = requestAnimationFrame(animate);
 
     return () => {
@@ -293,8 +326,6 @@ export default function BookASession() {
         style={{ width: "45%", background: "#064e3b" }}
       >
         <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
-
-        {/* Headline */}
         <div className="absolute top-10 left-10 right-10 z-10">
           <h2
             className="font-black text-white leading-[1.05] tracking-[-0.025em]"
@@ -305,8 +336,6 @@ export default function BookASession() {
             confidence.
           </h2>
         </div>
-
-        {/* Logo */}
         <div className="absolute bottom-10 left-10 z-10 flex items-center gap-2.5">
           <Logo />
           <span
@@ -341,47 +370,53 @@ export default function BookASession() {
             </h3>
           </div>
 
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="flex flex-col gap-3.5"
-          >
-            {/* Name row */}
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
             <div className="grid grid-cols-2 gap-3">
               <input
                 className={inputCls}
                 type="text"
+                name="firstName"
                 placeholder="First name*"
                 required
+                value={form.firstName}
+                onChange={handleChange}
               />
               <input
                 className={inputCls}
                 type="text"
+                name="lastName"
                 placeholder="Last name*"
                 required
+                value={form.lastName}
+                onChange={handleChange}
               />
             </div>
 
-            {/* Work email */}
             <input
               className={inputCls}
               type="email"
+              name="email"
               placeholder="Work email*"
               required
+              value={form.email}
+              onChange={handleChange}
             />
-
-            {/* Phone */}
             <input
               className={inputCls}
               type="tel"
+              name="phone"
               placeholder="Mobile phone number*"
+              value={form.phone}
+              onChange={handleChange}
             />
 
-            {/* Company size */}
             <div className="relative">
               <select
                 className={`${inputCls} appearance-none cursor-pointer pr-10`}
+                name="companySize"
                 required
-                defaultValue=""
+                value={form.companySize}
+                onChange={handleChange}
               >
                 <option value="" disabled>
                   Company size*
@@ -395,20 +430,31 @@ export default function BookASession() {
               <ChevronDown />
             </div>
 
-            {/* Company name */}
             <input
               className={inputCls}
               type="text"
+              name="companyName"
               placeholder="Company name*"
               required
+              value={form.companyName}
+              onChange={handleChange}
+            />
+            <input
+              className={inputCls}
+              type="url"
+              name="website"
+              placeholder="Company website (e.g. https://company.co.ke)"
+              value={form.website}
+              onChange={handleChange}
             />
 
-            {/* How did you hear about us — dropdown */}
             <div className="relative">
               <select
                 className={`${inputCls} appearance-none cursor-pointer pr-10`}
+                name="source"
                 required
-                defaultValue=""
+                value={form.source}
+                onChange={handleChange}
               >
                 <option value="" disabled>
                   How did you hear about us?*
@@ -427,14 +473,29 @@ export default function BookASession() {
               <ChevronDown />
             </div>
 
-            {/* Challenge textarea — last field */}
             <textarea
               className={inputCls}
+              name="challenge"
               style={{ resize: "vertical", minHeight: "80px" }}
               placeholder="What's your biggest project management challenge right now?*"
+              value={form.challenge}
+              onChange={handleChange}
             />
 
-            {/* Privacy */}
+            {error && (
+              <p
+                style={{
+                  fontSize: "13px",
+                  color: "#ef4444",
+                  background: "#fef2f2",
+                  padding: "12px",
+                  borderRadius: "8px",
+                }}
+              >
+                {error}
+              </p>
+            )}
+
             <p style={{ fontSize: "13px", color: "#64748b" }}>
               By clicking this button, you agree to our{" "}
               <a
@@ -445,29 +506,32 @@ export default function BookASession() {
               </a>
             </p>
 
-            {/* Submit */}
             <button
               type="submit"
+              disabled={loading}
               style={{
                 width: "100%",
-                background: "#0f172a",
+                background: loading ? "#475569" : "#0f172a",
                 color: "white",
                 border: "none",
                 borderRadius: "8px",
                 padding: "14px",
                 fontSize: "15px",
                 fontWeight: 700,
-                cursor: "pointer",
+                cursor: loading ? "not-allowed" : "pointer",
                 transition: "background 0.15s",
               }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.background = "#1e293b")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.background = "#0f172a")
-              }
+              onMouseEnter={(e) => {
+                if (!loading) e.currentTarget.style.background = "#1e293b";
+              }}
+              onMouseLeave={(e) => {
+                if (!loading)
+                  e.currentTarget.style.background = loading
+                    ? "#475569"
+                    : "#0f172a";
+              }}
             >
-              Get a demo
+              {loading ? "Booking your session..." : "Get a demo"}
             </button>
           </form>
         </div>
