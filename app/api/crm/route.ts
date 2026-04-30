@@ -13,24 +13,10 @@ export async function POST(req: NextRequest) {
 
   try {
     // 1. Create company
-    const companyBody: Record<string, unknown> = {
-      name: data.companyName,
-    };
-
-    if (data.website) {
-      // Strip protocol and any markdown link formatting, keep plain domain only
-      const cleanDomain = data.website
-        .replace(/^https?:\/\//, "")
-        .replace(/\[.*?\]\(.*?\)/, "")
-        .split("/")[0]
-        .trim();
-      if (cleanDomain) companyBody.domainName = cleanDomain;
-    }
-
     const companyRes = await fetch(`${TWENTY_API_URL}/rest/companies`, {
       method: "POST",
       headers,
-      body: JSON.stringify(companyBody),
+      body: JSON.stringify({ name: data.companyName }),
     });
     const companyJson = await companyRes.json();
     console.log("Company response:", JSON.stringify(companyJson));
@@ -38,49 +24,38 @@ export async function POST(req: NextRequest) {
       companyJson?.data?.createCompany?.id ?? companyJson?.id ?? null;
 
     // 2. Create person
+    const personBody: Record<string, unknown> = {
+      name: { firstName: data.firstName, lastName: data.lastName },
+      emails: { primaryEmail: data.email },
+      phones: { primaryPhoneNumber: data.phone },
+    };
+    if (companyId) personBody.companyId = companyId;
+
     const personRes = await fetch(`${TWENTY_API_URL}/rest/people`, {
       method: "POST",
       headers,
-      body: JSON.stringify({
-        name: { firstName: data.firstName, lastName: data.lastName },
-        emails: { primaryEmail: data.email },
-        phones: { primaryPhoneNumber: data.phone },
-        ...(companyId ? { companyId } : {}),
-      }),
+      body: JSON.stringify(personBody),
     });
     const personJson = await personRes.json();
     console.log("Person response:", JSON.stringify(personJson));
     const personId =
       personJson?.data?.createPerson?.id ?? personJson?.id ?? null;
 
-    // 3. Create deal — stage must match Twenty's internal key exactly
+    // 3. Create deal
+    const dealBody: Record<string, unknown> = {
+      name: `${data.companyName} — Session Request`,
+      stage: "NEW",
+    };
+    if (companyId) dealBody.companyId = companyId;
+    if (personId) dealBody.pointOfContactId = personId;
+
     const dealRes = await fetch(`${TWENTY_API_URL}/rest/opportunities`, {
       method: "POST",
       headers,
-      body: JSON.stringify({
-        name: `${data.companyName} — Session Request`,
-        stage: "NEW",
-        ...(companyId ? { companyId } : {}),
-        ...(personId ? { pointOfContactId: personId } : {}),
-      }),
+      body: JSON.stringify(dealBody),
     });
     const dealJson = await dealRes.json();
     console.log("Deal response:", JSON.stringify(dealJson));
-    const dealId =
-      dealJson?.data?.createOpportunity?.id ?? dealJson?.id ?? null;
-
-    // 4. Attach note with source + challenge
-    if (dealId) {
-      const noteRes = await fetch(`${TWENTY_API_URL}/rest/notes`, {
-        method: "POST",
-        headers,
-        body: JSON.stringify({
-          title: "Session Request Details",
-          body: `Company size: ${data.companySize}\nHow they heard about us: ${data.source}\nBiggest challenge: ${data.challenge}`,
-        }),
-      });
-      console.log("Note response:", JSON.stringify(await noteRes.json()));
-    }
 
     return NextResponse.json({ success: true });
   } catch (err) {

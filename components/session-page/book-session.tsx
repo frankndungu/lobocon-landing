@@ -443,7 +443,7 @@ export default function BookASession() {
               className={inputCls}
               type="url"
               name="website"
-              placeholder="Company website (e.g. https://company.co.ke)"
+              placeholder="Company website (e.g. https://company.com)"
               value={form.website}
               onChange={handleChange}
             />
