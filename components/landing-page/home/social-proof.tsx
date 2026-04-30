@@ -116,7 +116,7 @@ export default function SocialProof() {
   }, []);
 
   return (
-    <section className="w-full mt-16 lg:mt-20">
+    <section className="w-full mt-16 lg:mt-20 px-5 md:px-10 lg:px-16">
       <h2 className="text-center text-[11px] font-bold tracking-[0.2em] text-slate-900 mb-8 uppercase px-6">
         Trusted by leading construction firms
       </h2>

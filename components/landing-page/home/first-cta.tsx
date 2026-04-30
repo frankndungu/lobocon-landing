@@ -5,24 +5,21 @@ const FirstCTA = () => {
     <>
       <div className="hatch" />
 
-      <section className="w-full max-w-345 mx-auto">
+      <section className="w-full px-5 md:px-10 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 min-h-70">
           {/* LEFT: Copy */}
-          <div className="flex flex-col justify-center px-8 sm:px-14 lg:px-20 py-16 lg:py-20 border-r border-slate-200">
+          <div className="flex flex-col justify-center py-16 lg:py-20 pr-8 sm:pr-14 lg:pr-20 border-r border-slate-200">
             <p className="text-[11px] font-bold tracking-[0.2em] text-slate-900 uppercase mb-5">
               Get started
             </p>
-            <h2 className="text-[32px] sm:text-[40px] lg:text-[48px] font-black text-slate-900 leading-[1.05] tracking-[-0.02em] mb-6 max-w-lg">
-              Every project.
+            <h2 className="text-[32px] sm:text-[40px] lg:text-[45px] font-black text-slate-900 leading-[1.05] tracking-[-0.02em] mb-6 max-w-lg">
+              Know exactly where
               <br />
-              One source
-              <br />
-              of truth.
+              your money is going.
             </h2>
             <p className="text-[15px] text-slate-700 leading-relaxed mb-10 max-w-sm">
-              Replace your BOQ spreadsheets, site WhatsApp groups, and
-              end-of-month reports with a single platform built for
-              construction.
+              Track your BOQ, cash flow, schedule, and labor in one place. Know
+              what is happening on every project before it costs you.
             </p>
             <div className="flex items-center gap-4 flex-wrap">
               <Link
@@ -251,7 +248,7 @@ const FirstCTA = () => {
                 style={{ left: "14%", top: "3%" }}
               >
                 <div className="w-1.5 h-1.5 rounded-sm bg-emerald-600 shrink-0" />
-                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">
+                <span className="text-[9px] font-bold text-slate-700 uppercase tracking-wider">
                   Commercial
                 </span>
               </div>
@@ -260,7 +257,7 @@ const FirstCTA = () => {
                 style={{ left: "44%", top: "24%" }}
               >
                 <div className="w-1.5 h-1.5 rounded-sm bg-amber-500 shrink-0" />
-                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">
+                <span className="text-[9px] font-bold text-slate-700 uppercase tracking-wider">
                   Execution
                 </span>
               </div>
@@ -269,7 +266,7 @@ const FirstCTA = () => {
                 style={{ left: "63%", top: "82%" }}
               >
                 <div className="w-1.5 h-1.5 rounded-sm bg-violet-600 shrink-0" />
-                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">
+                <span className="text-[9px] font-bold text-slate-700 uppercase tracking-wider">
                   Reporting
                 </span>
               </div>

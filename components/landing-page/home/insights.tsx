@@ -82,7 +82,7 @@ export default function Insights() {
 
   return (
     <>
-      <section className="w-full max-w-345 mx-auto px-6 lg:px-14 py-16 lg:py-24">
+      <section className="w-full max-w-345 mx-auto px-5 md:px-10 lg:px-16 py-16 lg:py-24">
         <div className="flex flex-col lg:flex-row lg:gap-16">
           {/* Left: heading */}
           <div className="shrink-0 lg:w-55 mb-10 lg:mb-0 lg:pt-1">

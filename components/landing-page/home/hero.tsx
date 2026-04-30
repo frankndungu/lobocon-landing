@@ -114,7 +114,7 @@ export default function Hero() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="text-lg font-black text-slate-900 font-mono">
-                  KES 24,345
+                  KES 245,345
                 </span>
                 <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               </div>
@@ -226,7 +226,7 @@ export default function Hero() {
             </p>
             <div className="flex items-center gap-2 mb-3">
               <span className="text-xl font-black text-slate-900 font-mono">
-                KES 24,345
+                KES 245,345
               </span>
               <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             </div>
@@ -396,7 +396,7 @@ export default function Hero() {
               </p>
               <div className="flex items-center gap-2">
                 <span className="text-2xl font-black text-slate-900 font-mono tracking-tight">
-                  KES 24,345
+                  KES 245,345
                 </span>
                 <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               </div>

@@ -33,7 +33,7 @@ const LOGOS = [
 
 export default function Integrations() {
   return (
-    <div className="px-6 lg:px-14 py-4 mt-8">
+    <div className="px-5 md:px-10 lg:px-16 py-4 mt-8">
       <div
         className="rounded-2xl overflow-hidden"
         style={{ background: "#0f172a" }}
