@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 const TWENTY_API_KEY = process.env.TWENTY_API_KEY!;
 const TWENTY_API_URL = process.env.TWENTY_API_URL!;
+const BACKEND_URL = process.env.BACKEND_URL!;
 
 export async function POST(req: NextRequest) {
   const data = await req.json();
@@ -12,18 +13,24 @@ export async function POST(req: NextRequest) {
   };
 
   try {
-    // 1. Create company
+    // 1. Save to Lobocon backend (lead_submissions table)
+    await fetch(`${BACKEND_URL}/api/crm/lead`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    // 2. Create company in Twenty CRM
     const companyRes = await fetch(`${TWENTY_API_URL}/rest/companies`, {
       method: "POST",
       headers,
       body: JSON.stringify({ name: data.companyName }),
     });
     const companyJson = await companyRes.json();
-    console.log("Company response:", JSON.stringify(companyJson));
     const companyId =
       companyJson?.data?.createCompany?.id ?? companyJson?.id ?? null;
 
-    // 2. Create person
+    // 3. Create person in Twenty CRM
     const personBody: Record<string, unknown> = {
       name: { firstName: data.firstName, lastName: data.lastName },
       emails: { primaryEmail: data.email },
@@ -37,11 +44,10 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify(personBody),
     });
     const personJson = await personRes.json();
-    console.log("Person response:", JSON.stringify(personJson));
     const personId =
       personJson?.data?.createPerson?.id ?? personJson?.id ?? null;
 
-    // 3. Create deal
+    // 4. Create deal in Twenty CRM
     const dealBody: Record<string, unknown> = {
       name: `${data.companyName} — Session Request`,
       stage: "NEW",
@@ -49,13 +55,11 @@ export async function POST(req: NextRequest) {
     if (companyId) dealBody.companyId = companyId;
     if (personId) dealBody.pointOfContactId = personId;
 
-    const dealRes = await fetch(`${TWENTY_API_URL}/rest/opportunities`, {
+    await fetch(`${TWENTY_API_URL}/rest/opportunities`, {
       method: "POST",
       headers,
       body: JSON.stringify(dealBody),
     });
-    const dealJson = await dealRes.json();
-    console.log("Deal response:", JSON.stringify(dealJson));
 
     return NextResponse.json({ success: true });
   } catch (err) {
