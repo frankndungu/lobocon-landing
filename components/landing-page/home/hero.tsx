@@ -283,7 +283,7 @@ export default function Hero() {
               Book a working session
             </Link>
             <a
-              href="mailto:sales@lobocon.co"
+              href="mailto:support@nexaslab.com"
               className="px-8 py-3.5 rounded-full border border-slate-200 text-slate-900 font-semibold hover:bg-slate-50 transition-colors text-sm"
             >
               Contact Sales

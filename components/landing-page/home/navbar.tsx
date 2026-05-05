@@ -722,6 +722,10 @@ const IcoAbout = () => (
   </svg>
 );
 
+// ── Nav data ──────────────────────────────────────────────────────────────────
+// Each platform link has an optional `href`. When present the item is
+// rendered as a <Link> so it navigates. When absent it stays as a <div>.
+
 const platformSections = [
   {
     title: "Commercial",
@@ -730,16 +734,19 @@ const platformSections = [
         label: "BOQ Management",
         desc: "Import, track, and manage bills of quantities live.",
         icon: <IcoBOQ />,
+        href: "/boq",
       },
       {
         label: "Earned Value",
         desc: "CPI and SPI from live BOQ progress.",
         icon: <IcoEV />,
+        href: null,
       },
       {
         label: "Cash Flow",
         desc: "Forecast and track project cash positions.",
         icon: <IcoCashFlow />,
+        href: null,
       },
     ],
   },
@@ -750,16 +757,19 @@ const platformSections = [
         label: "Scheduling",
         desc: "MS Project import, CPM critical path.",
         icon: <IcoScheduling />,
+        href: null,
       },
       {
         label: "Planned vs Actual",
         desc: "Daily variance against your baseline.",
         icon: <IcoPvA />,
+        href: null,
       },
       {
         label: "Labor",
         desc: "Track workforce allocation and site hours.",
         icon: <IcoLabor />,
+        href: null,
       },
     ],
   },
@@ -770,11 +780,13 @@ const platformSections = [
         label: "Collaboration",
         desc: "Role-based access for your whole team.",
         icon: <IcoCollab />,
+        href: null,
       },
       {
         label: "Resources",
         desc: "Equipment and material tracking on site.",
         icon: <IcoResources />,
+        href: null,
       },
     ],
   },
@@ -818,7 +830,6 @@ export default function Navbar() {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    // Close mobile menu when resizing to desktop
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
         document.getElementById("mobile-menu")?.classList.remove("open");
@@ -901,18 +912,30 @@ export default function Navbar() {
                   <p className="text-[10px] font-bold text-slate-900 uppercase tracking-widest px-3 mt-3 mb-2">
                     {group.title}
                   </p>
-                  {group.links.map((item) => (
-                    <Link
-                      key={item.label}
-                      href="#"
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-50"
-                    >
-                      {item.icon}
-                      <span className="text-sm font-semibold text-slate-800">
-                        {item.label}
-                      </span>
-                    </Link>
-                  ))}
+                  {group.links.map((item) =>
+                    item.href ? (
+                      <Link
+                        key={item.label}
+                        href={item.href}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-50"
+                      >
+                        {item.icon}
+                        <span className="text-sm font-semibold text-slate-800">
+                          {item.label}
+                        </span>
+                      </Link>
+                    ) : (
+                      <div
+                        key={item.label}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-50 cursor-default"
+                      >
+                        {item.icon}
+                        <span className="text-sm font-semibold text-slate-800">
+                          {item.label}
+                        </span>
+                      </div>
+                    ),
+                  )}
                 </div>
               ))}
             </div>
@@ -929,16 +952,15 @@ export default function Navbar() {
             </button>
             <div id="section-solutions" className="mobile-section-content pb-3">
               {solutionLinks.map((item) => (
-                <Link
+                <div
                   key={item.label}
-                  href="#"
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-50"
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-50 cursor-default"
                 >
                   {item.icon}
                   <span className="text-sm font-semibold text-slate-800">
                     {item.label}
                   </span>
-                </Link>
+                </div>
               ))}
             </div>
           </div>
@@ -954,16 +976,15 @@ export default function Navbar() {
             </button>
             <div id="section-resources" className="mobile-section-content pb-3">
               {resourceLinks.map((item) => (
-                <Link
+                <div
                   key={item.label}
-                  href="#"
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-50"
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-50 cursor-default"
                 >
                   {item.icon}
                   <span className="text-sm font-semibold text-slate-800">
                     {item.label}
                   </span>
-                </Link>
+                </div>
               ))}
             </div>
           </div>
@@ -1050,22 +1071,40 @@ export default function Navbar() {
                     <p className="text-[10px] font-bold text-slate-900 uppercase tracking-widest mb-4">
                       {section.title}
                     </p>
-                    {section.links.map((item) => (
-                      <div
-                        key={item.label}
-                        className="dd-row flex items-start gap-3 p-2.5 cursor-pointer mb-1"
-                      >
-                        {item.icon}
-                        <div>
-                          <p className="text-sm font-semibold text-slate-900">
-                            {item.label}
-                          </p>
-                          <p className="text-xs text-slate-800 mt-0.5 leading-relaxed">
-                            {item.desc}
-                          </p>
+                    {section.links.map((item) =>
+                      item.href ? (
+                        <Link
+                          key={item.label}
+                          href={item.href}
+                          className="dd-row flex items-start gap-3 p-2.5 cursor-pointer mb-1 rounded-lg"
+                        >
+                          {item.icon}
+                          <div>
+                            <p className="text-sm font-semibold text-slate-900">
+                              {item.label}
+                            </p>
+                            <p className="text-xs text-slate-800 mt-0.5 leading-relaxed">
+                              {item.desc}
+                            </p>
+                          </div>
+                        </Link>
+                      ) : (
+                        <div
+                          key={item.label}
+                          className="dd-row flex items-start gap-3 p-2.5 cursor-default mb-1"
+                        >
+                          {item.icon}
+                          <div>
+                            <p className="text-sm font-semibold text-slate-900">
+                              {item.label}
+                            </p>
+                            <p className="text-xs text-slate-800 mt-0.5 leading-relaxed">
+                              {item.desc}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ),
+                    )}
                   </div>
                 ))}
               </div>
@@ -1094,7 +1133,7 @@ export default function Navbar() {
                   {solutionLinks.map((item, i) => (
                     <div
                       key={item.label}
-                      className="dd-row flex items-center gap-3 p-3 cursor-pointer"
+                      className="dd-row flex items-center gap-3 p-3 cursor-default"
                       style={{
                         borderBottom:
                           i < solutionLinks.length - 1
@@ -1130,7 +1169,7 @@ export default function Navbar() {
                 {resourceLinks.map((item, i) => (
                   <div
                     key={item.label}
-                    className="dd-row flex items-start gap-3 p-3 cursor-pointer"
+                    className="dd-row flex items-start gap-3 p-3 cursor-default"
                     style={{
                       borderBottom: i < 2 ? "1px solid #f1f5f9" : "none",
                       borderRight: i % 2 === 0 ? "1px solid #f1f5f9" : "none",
