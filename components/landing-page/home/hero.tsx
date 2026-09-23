@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CONTACT } from "@/components/contact/contact";
 
 const ArrowDown = () => (
   <svg
@@ -60,10 +61,12 @@ export default function Hero() {
             Book a working session
           </Link>
           <a
-            href="mailto:sales@lobocon.co"
+            href={CONTACT.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full px-8 py-3.5 rounded-full border border-slate-200 text-slate-900 font-semibold text-sm text-center hover:bg-slate-50 transition-colors"
           >
-            Contact Sales
+            WhatsApp us
           </a>
         </div>
         <div className="mt-8 grid grid-cols-2 gap-3 w-full">
@@ -173,10 +176,12 @@ export default function Hero() {
             Book a working session
           </Link>
           <a
-            href="mailto:sales@lobocon.co"
+            href={CONTACT.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-8 py-3.5 rounded-full border border-slate-200 text-slate-900 font-semibold text-sm text-center hover:bg-slate-50 transition-colors"
           >
-            Contact Sales
+            WhatsApp us
           </a>
         </div>
         <div className="mt-12 grid grid-cols-3 gap-5 w-full">
@@ -283,10 +288,12 @@ export default function Hero() {
               Book a working session
             </Link>
             <a
-              href="mailto:support@nexaslab.com"
+              href={CONTACT.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-3.5 rounded-full border border-slate-200 text-slate-900 font-semibold hover:bg-slate-50 transition-colors text-sm"
             >
-              Contact Sales
+              WhatsApp us
             </a>
           </div>
         </div>

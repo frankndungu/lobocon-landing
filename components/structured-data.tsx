@@ -1,3 +1,5 @@
+import { CONTACT } from "@/components/contact/contact";
+
 export default function StructuredData() {
   const softwareSchema = {
     "@context": "https://schema.org",
@@ -14,22 +16,12 @@ export default function StructuredData() {
     ],
     offers: {
       "@type": "Offer",
-      price: "6500",
+      price: "300000",
       priceCurrency: "KES",
-      priceValidUntil: "2026-12-31",
       description:
-        "KES 6,500 per user per month. First month 50% off for early customers.",
-      seller: {
-        "@type": "Organization",
-        name: "Lobocon",
-      },
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      ratingCount: "12",
-      bestRating: "5",
-      worstRating: "1",
+        "90-day pilot on one live project, KES 300,000 exclusive of VAT, credited against the first year on conversion.",
+      url: "https://lobocon.co/pilot",
+      seller: { "@type": "Organization", name: "Lobocon" },
     },
     description:
       "Lobocon is the Construction OS for property developers and infrastructure firms across Africa. Track BOQ, planned vs actual, cash flow, earned value, scheduling, and labor in one platform. Know if your project is profitable before it is too late.",
@@ -56,7 +48,8 @@ export default function StructuredData() {
       logo: "https://lobocon.co/icon.svg",
       contactPoint: {
         "@type": "ContactPoint",
-        email: "sales@lobocon.co",
+        email: CONTACT.email,
+        telephone: CONTACT.phoneE164,
         contactType: "Sales",
         areaServed: "Africa",
         availableLanguage: "English",
@@ -116,7 +109,7 @@ export default function StructuredData() {
         name: "How much does Lobocon cost?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Lobocon is priced at KES 6,500 per user per month. Early customers get 50% off their first month.",
+          text: "Lobocon starts with a 90-day pilot on one live project for KES 300,000, exclusive of VAT, credited against the first year if you continue. After the pilot it is priced per project with unlimited users, from KES 86,500 a month billed annually.",
         },
       },
       {

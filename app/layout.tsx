@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import WhatsAppFab from "@/components/contact/whatsapp-fab";
 
 export const metadata: Metadata = {
   title:
@@ -105,6 +106,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         {children}
+        <WhatsAppFab />
         <Analytics />
         <SpeedInsights />
       </body>

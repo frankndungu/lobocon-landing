@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { CONTACT } from "@/components/contact/contact";
 
 const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL!;
 
@@ -130,7 +131,7 @@ export default function BookASession() {
       window.location.href = CALENDLY_URL;
     } catch {
       setError(
-        "Something went wrong. Please try again or email us at sales@lobocon.co",
+        `Something went wrong. Please try again or WhatsApp us on ${CONTACT.phoneDisplay}.`,
       );
       setLoading(false);
     }

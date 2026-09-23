@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { CornerDownRight } from "lucide-react";
+import { CONTACT } from "@/components/contact/contact";
 
 const Logo = () => (
   <svg
@@ -722,6 +723,131 @@ const IcoAbout = () => (
   </svg>
 );
 
+const IcoRFI = () => (
+  <svg
+    viewBox="0 0 28 28"
+    fill="none"
+    style={{ width: 28, height: 28, flexShrink: 0 }}
+  >
+    <path
+      d="M6 6.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5h-9l-4.5 3.5v-3.5H6A1.5 1.5 0 0 1 4.5 17V8A1.5 1.5 0 0 1 6 6.5z"
+      fill="none"
+      stroke="#64748b"
+      strokeWidth="1.2"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M12.2 10.6a1.9 1.9 0 1 1 2.6 1.8c-.5.2-.8.6-.8 1.1v.6"
+      fill="none"
+      stroke="#64748b"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+    />
+    <circle cx="14" cy="15.9" r="0.7" fill="#64748b" />
+  </svg>
+);
+
+const IcoDocs = () => (
+  <svg
+    viewBox="0 0 28 28"
+    fill="none"
+    style={{ width: 28, height: 28, flexShrink: 0 }}
+  >
+    <rect
+      x="9"
+      y="4.5"
+      width="12"
+      height="15"
+      rx="1.2"
+      fill="none"
+      stroke="#64748b"
+      strokeWidth="1.2"
+    />
+    <rect
+      x="6"
+      y="8.5"
+      width="12"
+      height="15"
+      rx="1.2"
+      fill="#ffffff"
+      stroke="#64748b"
+      strokeWidth="1.2"
+    />
+    <line
+      x1="9"
+      y1="13"
+      x2="15"
+      y2="13"
+      stroke="#64748b"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+    />
+    <line
+      x1="9"
+      y1="16"
+      x2="15"
+      y2="16"
+      stroke="#64748b"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+const IcoReporting = () => (
+  <svg
+    viewBox="0 0 28 28"
+    fill="none"
+    style={{ width: 28, height: 28, flexShrink: 0 }}
+  >
+    <rect
+      x="6.5"
+      y="4.5"
+      width="15"
+      height="19"
+      rx="1.2"
+      fill="none"
+      stroke="#64748b"
+      strokeWidth="1.2"
+    />
+    <line
+      x1="9.5"
+      y1="9"
+      x2="18.5"
+      y2="9"
+      stroke="#64748b"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+    />
+    <line
+      x1="9.5"
+      y1="12"
+      x2="18.5"
+      y2="12"
+      stroke="#64748b"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+    />
+    <line
+      x1="9.5"
+      y1="15"
+      x2="15"
+      y2="15"
+      stroke="#64748b"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M12 19l1.8 1.6 3.4-3.6"
+      fill="none"
+      stroke="#64748b"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 // ── Nav data ──────────────────────────────────────────────────────────────────
 // Each platform link has an optional `href`. When present the item is
 // rendered as a <Link> so it navigates. When absent it stays as a <div>.
@@ -757,7 +883,7 @@ const platformSections = [
         label: "Scheduling",
         desc: "MS Project import, CPM critical path.",
         icon: <IcoScheduling />,
-        href: null,
+        href: "/scheduling",
       },
       {
         label: "Planned vs Actual",
@@ -771,11 +897,29 @@ const platformSections = [
         icon: <IcoLabor />,
         href: null,
       },
+      {
+        label: "RFIs",
+        desc: "Issued, answered, timestamped. Ships inside the pilot.",
+        icon: <IcoRFI />,
+        href: "/rfis",
+      },
+      {
+        label: "Documents",
+        desc: "Drawing revisions with receipts. Ships inside the pilot.",
+        icon: <IcoDocs />,
+        href: "/documents",
+      },
     ],
   },
   {
     title: "Reporting",
     links: [
+      {
+        label: "Reporting",
+        desc: "Certified quantities with a name, a time and a reason.",
+        icon: <IcoReporting />,
+        href: "/reporting",
+      },
       {
         label: "Collaboration",
         desc: "Role-based access for your whole team.",
@@ -1010,6 +1154,18 @@ export default function Navbar() {
               </Link>
             </div>
           </div>
+
+          {/* Pilot */}
+          <div className="border-b border-slate-100">
+            <Link
+              href="/pilot"
+              onClick={closeMenu}
+              className="w-full flex items-center gap-2.5 px-3 py-4 text-[15px] font-semibold text-slate-900"
+            >
+              <CornerDownRight className="w-4 h-4 text-slate-900" />
+              Pilot
+            </Link>
+          </div>
         </div>
 
         <div className="px-4 py-5 border-t border-slate-100 flex flex-col gap-3">
@@ -1019,6 +1175,14 @@ export default function Navbar() {
           >
             Book a session
           </Link>
+          <a
+            href={CONTACT.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full py-3.5 rounded-full border border-slate-200 text-slate-900 text-[15px] font-semibold text-center hover:bg-slate-50 transition-colors"
+          >
+            WhatsApp us
+          </a>
           <a
             href="https://app.lobocon.co/login"
             className="w-full py-3.5 rounded-full border border-slate-200 text-slate-900 text-[15px] font-semibold text-center hover:bg-slate-50 transition-colors"
@@ -1222,6 +1386,14 @@ export default function Navbar() {
               </div>
             </div>
           </div>
+
+          {/* Pilot */}
+          <Link
+            href="/pilot"
+            className="flex items-center gap-1 cursor-pointer hover:text-slate-900 transition-colors py-2"
+          >
+            Pilot
+          </Link>
         </div>
 
         {/* Desktop CTAs */}
@@ -1232,6 +1404,27 @@ export default function Navbar() {
           >
             Log in
           </a>
+          <a
+            href={CONTACT.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-slate-200 text-[14px] font-semibold text-slate-900 hover:bg-slate-50 transition-colors"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#10b981"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L4 21l1.6-4.4A8.5 8.5 0 1 1 21 12z" />
+            </svg>
+            WhatsApp us
+          </a>
           <Link
             href="/session"
             className="px-6 py-2.5 rounded-full bg-slate-900 text-white text-[14px] font-semibold hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/20"
@@ -1240,25 +1433,49 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Hamburger */}
-        <button
-          onClick={openMenu}
-          className="lg:hidden w-9 h-9 flex items-center justify-center rounded-lg hover:bg-slate-100 transition-colors"
-        >
-          <svg
-            className="w-5 h-5 text-slate-800"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        {/* Mobile: WhatsApp and hamburger */}
+        <div className="lg:hidden flex items-center gap-2">
+          <a
+            href={CONTACT.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Message us on WhatsApp"
+            className="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 hover:bg-slate-50 transition-colors"
           >
-            <path
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#10b981"
+              strokeWidth="2.2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
+              aria-hidden="true"
+            >
+              <path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L4 21l1.6-4.4A8.5 8.5 0 1 1 21 12z" />
+            </svg>
+          </a>
+          <button
+            onClick={openMenu}
+            aria-label="Open menu"
+            className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-slate-100 transition-colors"
+          >
+            <svg
+              className="w-5 h-5 text-slate-800"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
       </nav>
     </>
   );

@@ -31,12 +31,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.95,
     },
-    // Add these as you ship each page — same tier as the three above:
-    // { url: "https://lobocon.co/scheduling", lastModified: new Date(), changeFrequency: "weekly", priority: 0.95 },
+    {
+      url: "https://lobocon.co/scheduling",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+    {
+      url: "https://lobocon.co/reporting",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+    {
+      url: "https://lobocon.co/rfis",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+    {
+      url: "https://lobocon.co/documents",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+    // Add these as you ship each page — same tier as the ones above:
     // { url: "https://lobocon.co/planned-vs-actual", lastModified: new Date(), changeFrequency: "weekly", priority: 0.95 },
     // { url: "https://lobocon.co/labor", lastModified: new Date(), changeFrequency: "weekly", priority: 0.95 },
 
     // ── Tier 3: Company pages — important but stable ──────────────────────────
+    {
+      url: "https://lobocon.co/pilot",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
     {
       url: "https://lobocon.co/about",
       lastModified: new Date(),

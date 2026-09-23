@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Navbar from "@/components/landing-page/home/navbar";
 import Footer from "@/components/landing-page/home/footer";
+import { CONTACT } from "@/components/contact/contact";
 import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
 
@@ -1292,10 +1293,12 @@ export default function CashFlowPage() {
                     Book a working session
                   </Link>
                   <a
-                    href="mailto:sales@lobocon.co"
+                    href={CONTACT.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="px-8 py-3.5 rounded-full border border-slate-200 text-slate-900 font-semibold hover:bg-slate-50 transition-colors text-sm"
                   >
-                    Contact Sales
+                    WhatsApp us
                   </a>
                 </motion.div>
                 <motion.div
@@ -1757,10 +1760,10 @@ export default function CashFlowPage() {
                   <p className="mt-4 text-[15px] text-slate-700 leading-relaxed max-w-sm">
                     Email us at{" "}
                     <a
-                      href="mailto:sales@lobocon.co"
+                      href={`mailto:${CONTACT.email}`}
                       className="text-slate-900 font-semibold hover:underline"
                     >
-                      sales@lobocon.co
+                      {CONTACT.email}
                     </a>{" "}
                     if your question is not here.
                   </p>

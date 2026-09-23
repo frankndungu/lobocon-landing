@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CONTACT } from "@/components/contact/contact";
 
 const Logo = () => (
   <svg
@@ -50,27 +51,38 @@ const Logo = () => (
   </svg>
 );
 
-const PLATFORM = [
-  "BOQ Management",
-  "Earned Value",
-  "Cash Flow",
-  "Scheduling",
-  "Planned vs Actual",
-  "Labor Tracking",
-  "Collaboration",
-  "Reporting",
+type FooterItem = { label: string; href: string };
+
+const PLATFORM: FooterItem[] = [
+  { label: "BOQ Management", href: "/boq" },
+  { label: "Earned Value", href: "/earned-value" },
+  { label: "Cash Flow", href: "/cash-flow" },
+  { label: "Scheduling", href: "/scheduling" },
+  { label: "Reporting", href: "/reporting" },
+  { label: "RFIs", href: "/rfis" },
+  { label: "Documents", href: "/documents" },
 ];
 
-const SOLUTIONS = [
-  "Property Developers",
-  "Infrastructure Firms",
-  "Engineering Firms",
-  "Quantity Surveyors",
+const SOLUTIONS: FooterItem[] = [
+  { label: "Property Developers", href: "#" },
+  { label: "Infrastructure Firms", href: "#" },
+  { label: "Engineering Firms", href: "#" },
+  { label: "Quantity Surveyors", href: "#" },
 ];
 
-const RESOURCES = ["Blog", "Tutorials", "Webinars", "Events", "Documentation"];
+const RESOURCES: FooterItem[] = [
+  { label: "Blog", href: "#" },
+  { label: "Tutorials", href: "#" },
+  { label: "Webinars", href: "#" },
+  { label: "Events", href: "#" },
+  { label: "Documentation", href: "#" },
+];
 
-const COMPANY = ["About", "Careers", "Customers", "Contact"];
+const COMPANY: FooterItem[] = [
+  { label: "About", href: "/about" },
+  { label: "The pilot", href: "/pilot" },
+  { label: "Contact", href: `mailto:${CONTACT.email}` },
+];
 
 const ColLabel = ({ label }: { label: string }) => (
   <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-slate-900 mb-4.5">
@@ -78,14 +90,20 @@ const ColLabel = ({ label }: { label: string }) => (
   </p>
 );
 
-const FooterLink = ({ label }: { label: string }) => (
-  <a
-    href="#"
-    className="block text-[15px] text-slate-700 hover:text-slate-900 transition-colors py-1.25"
-  >
-    {label}
-  </a>
-);
+const footerLinkClass =
+  "block text-[15px] text-slate-700 hover:text-slate-900 transition-colors py-1.25";
+
+// Internal routes use Link; mailto and placeholder "#" stay plain anchors.
+const FooterLink = ({ label, href }: FooterItem) =>
+  href.startsWith("/") ? (
+    <Link href={href} className={footerLinkClass}>
+      {label}
+    </Link>
+  ) : (
+    <a href={href} className={footerLinkClass}>
+      {label}
+    </a>
+  );
 
 export default function Footer() {
   return (
@@ -114,7 +132,7 @@ export default function Footer() {
           <div>
             <ColLabel label="Platform" />
             {PLATFORM.map((l) => (
-              <FooterLink key={l} label={l} />
+              <FooterLink key={l.label} {...l} />
             ))}
           </div>
 
@@ -122,7 +140,7 @@ export default function Footer() {
           <div>
             <ColLabel label="Solutions" />
             {SOLUTIONS.map((l) => (
-              <FooterLink key={l} label={l} />
+              <FooterLink key={l.label} {...l} />
             ))}
           </div>
 
@@ -130,7 +148,7 @@ export default function Footer() {
           <div>
             <ColLabel label="Resources" />
             {RESOURCES.map((l) => (
-              <FooterLink key={l} label={l} />
+              <FooterLink key={l.label} {...l} />
             ))}
           </div>
 
@@ -138,7 +156,7 @@ export default function Footer() {
           <div>
             <ColLabel label="Company" />
             {COMPANY.map((l) => (
-              <FooterLink key={l} label={l} />
+              <FooterLink key={l.label} {...l} />
             ))}
           </div>
         </div>
@@ -170,9 +188,29 @@ export default function Footer() {
       {/* Copyright bar */}
       <div className="w-full max-w-345 mx-auto px-5 md:px-10 lg:px-16 py-5">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[13px] text-slate-900">
-            &copy; Lobocon 2026. All rights reserved.
-          </p>
+          <div className="flex flex-col items-center sm:items-start gap-1 text-center sm:text-left">
+            <p className="text-[13px] text-slate-900">
+              &copy; Lobocon 2026. All rights reserved.
+            </p>
+            <p className="text-[13px] text-slate-700">
+              WhatsApp{" "}
+              <a
+                href={CONTACT.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono font-semibold text-slate-900"
+              >
+                {CONTACT.phoneDisplay}
+              </a>{" "}
+              or{" "}
+              <a
+                href={`mailto:${CONTACT.email}`}
+                className="font-semibold text-slate-900 break-words"
+              >
+                {CONTACT.email}
+              </a>
+            </p>
+          </div>
           <div className="flex items-center gap-6">
             <a
               href="#"
