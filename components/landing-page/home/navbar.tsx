@@ -312,57 +312,6 @@ const IcoPvA = () => (
   </svg>
 );
 
-const IcoLabor = () => (
-  <svg
-    viewBox="0 0 32 32"
-    fill="none"
-    style={{ width: 28, height: 28, flexShrink: 0 }}
-  >
-    <polygon
-      points="7,8 12,5 17,8 12,11"
-      fill="#fef3c7"
-      stroke="#d97706"
-      strokeWidth="1.1"
-      strokeLinejoin="round"
-    />
-    <polygon
-      points="7,8 12,11 12,16 7,13"
-      fill="#fffbeb"
-      stroke="#d97706"
-      strokeWidth="1.1"
-      strokeLinejoin="round"
-    />
-    <polygon
-      points="17,8 12,11 12,16 17,13"
-      fill="#fde68a"
-      stroke="#d97706"
-      strokeWidth="1.1"
-      strokeLinejoin="round"
-    />
-    <polygon
-      points="17,13 22,10 27,13 22,16"
-      fill="#fef3c7"
-      stroke="#d97706"
-      strokeWidth="1.1"
-      strokeLinejoin="round"
-    />
-    <polygon
-      points="17,13 22,16 22,21 17,18"
-      fill="#fffbeb"
-      stroke="#d97706"
-      strokeWidth="1.1"
-      strokeLinejoin="round"
-    />
-    <polygon
-      points="27,13 22,16 22,21 27,18"
-      fill="#fde68a"
-      stroke="#d97706"
-      strokeWidth="1.1"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
 const IcoCollab = () => (
   <svg
     viewBox="0 0 32 32"
@@ -849,8 +798,6 @@ const IcoReporting = () => (
 );
 
 // ── Nav data ──────────────────────────────────────────────────────────────────
-// Each platform link has an optional `href`. When present the item is
-// rendered as a <Link> so it navigates. When absent it stays as a <div>.
 
 const platformSections = [
   {
@@ -887,15 +834,15 @@ const platformSections = [
       },
       {
         label: "Planned vs Actual",
-        desc: "Daily variance against your baseline.",
+        desc: "Weekly site measurement, verified before billing.",
         icon: <IcoPvA />,
-        href: null,
+        href: "/planned-vs-actual",
       },
       {
-        label: "Labor",
-        desc: "Track workforce allocation and site hours.",
-        icon: <IcoLabor />,
-        href: null,
+        label: "Resources",
+        desc: "Labour, materials, fuel, subcontractors, equipment.",
+        icon: <IcoResources />,
+        href: "/resources",
       },
       {
         label: "RFIs",
@@ -922,15 +869,9 @@ const platformSections = [
       },
       {
         label: "Collaboration",
-        desc: "Role-based access for your whole team.",
+        desc: "Same numbers for the QS, the PM, the client and the Engineer.",
         icon: <IcoCollab />,
-        href: null,
-      },
-      {
-        label: "Resources",
-        desc: "Equipment and material tracking on site.",
-        icon: <IcoResources />,
-        href: null,
+        href: "/collaboration",
       },
     ],
   },
@@ -1056,30 +997,18 @@ export default function Navbar() {
                   <p className="text-[10px] font-bold text-slate-900 uppercase tracking-widest px-3 mt-3 mb-2">
                     {group.title}
                   </p>
-                  {group.links.map((item) =>
-                    item.href ? (
-                      <Link
-                        key={item.label}
-                        href={item.href}
-                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-50"
-                      >
-                        {item.icon}
-                        <span className="text-sm font-semibold text-slate-800">
-                          {item.label}
-                        </span>
-                      </Link>
-                    ) : (
-                      <div
-                        key={item.label}
-                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-50 cursor-default"
-                      >
-                        {item.icon}
-                        <span className="text-sm font-semibold text-slate-800">
-                          {item.label}
-                        </span>
-                      </div>
-                    ),
-                  )}
+                  {group.links.map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-50"
+                    >
+                      {item.icon}
+                      <span className="text-sm font-semibold text-slate-800">
+                        {item.label}
+                      </span>
+                    </Link>
+                  ))}
                 </div>
               ))}
             </div>
@@ -1235,40 +1164,23 @@ export default function Navbar() {
                     <p className="text-[10px] font-bold text-slate-900 uppercase tracking-widest mb-4">
                       {section.title}
                     </p>
-                    {section.links.map((item) =>
-                      item.href ? (
-                        <Link
-                          key={item.label}
-                          href={item.href}
-                          className="dd-row flex items-start gap-3 p-2.5 cursor-pointer mb-1 rounded-lg"
-                        >
-                          {item.icon}
-                          <div>
-                            <p className="text-sm font-semibold text-slate-900">
-                              {item.label}
-                            </p>
-                            <p className="text-xs text-slate-800 mt-0.5 leading-relaxed">
-                              {item.desc}
-                            </p>
-                          </div>
-                        </Link>
-                      ) : (
-                        <div
-                          key={item.label}
-                          className="dd-row flex items-start gap-3 p-2.5 cursor-default mb-1"
-                        >
-                          {item.icon}
-                          <div>
-                            <p className="text-sm font-semibold text-slate-900">
-                              {item.label}
-                            </p>
-                            <p className="text-xs text-slate-800 mt-0.5 leading-relaxed">
-                              {item.desc}
-                            </p>
-                          </div>
+                    {section.links.map((item) => (
+                      <Link
+                        key={item.label}
+                        href={item.href}
+                        className="dd-row flex items-start gap-3 p-2.5 cursor-pointer mb-1 rounded-lg"
+                      >
+                        {item.icon}
+                        <div>
+                          <p className="text-sm font-semibold text-slate-900">
+                            {item.label}
+                          </p>
+                          <p className="text-xs text-slate-800 mt-0.5 leading-relaxed">
+                            {item.desc}
+                          </p>
                         </div>
-                      ),
-                    )}
+                      </Link>
+                    ))}
                   </div>
                 ))}
               </div>

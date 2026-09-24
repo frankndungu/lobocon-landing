@@ -813,6 +813,125 @@ const ImportPreview = () => (
   </div>
 );
 
+// ── Preview 4: Variance against baseline ──────────────────────────────────────
+
+const VARIANCE = [
+  {
+    t: "Piling",
+    base: "15 Aug",
+    forecast: "5 Sep",
+    cls: "text-red-600",
+  },
+  {
+    t: "Pile caps",
+    base: "29 Aug",
+    forecast: "19 Sep",
+    cls: "text-red-600",
+  },
+  {
+    t: "Columns level 1",
+    base: "12 Sep",
+    forecast: "3 Oct",
+    cls: "text-amber-600",
+  },
+];
+
+const VARIANCE_COLS = "minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) minmax(0,0.8fr)";
+
+const VariancePreview = () => (
+  <BrowserFrame url="app.lobocon.co/projects/primark/schedule/variance">
+    <div className="px-4 pt-3 pb-2 border-b border-slate-100">
+      <p className="text-[8px] font-bold text-slate-600 uppercase tracking-widest">
+        Variance
+      </p>
+      <h3 className="text-[12px] font-black text-slate-900">
+        Baseline against forecast
+      </h3>
+    </div>
+    <div
+      className="grid gap-2 px-4 py-1.5 bg-slate-50 border-b border-slate-100"
+      style={{ gridTemplateColumns: VARIANCE_COLS }}
+    >
+      {["Task", "Baseline finish", "Forecast finish", "Variance"].map((h) => (
+        <span
+          key={h}
+          className="text-[8px] font-black text-slate-600 uppercase tracking-wider"
+        >
+          {h}
+        </span>
+      ))}
+    </div>
+    {VARIANCE.map((r) => (
+      <div
+        key={r.t}
+        className="grid gap-2 items-center px-4 py-2.5 border-b border-slate-50 last:border-b-0"
+        style={{ gridTemplateColumns: VARIANCE_COLS }}
+      >
+        <span className="text-[9px] font-semibold text-slate-800 truncate">
+          {r.t}
+        </span>
+        <span className="text-[9px] font-mono text-slate-800">{r.base}</span>
+        <span className="text-[9px] font-mono text-slate-800">
+          {r.forecast}
+        </span>
+        <span className={`text-[9px] font-black font-mono ${r.cls}`}>
+          +21 days
+        </span>
+      </div>
+    ))}
+  </BrowserFrame>
+);
+
+// ── Preview 5: Share link, as on design-ref/collaboration.html ────────────────
+
+const SHARE_ROWS = [
+  { k: "Shows", v: "Gantt, baseline, critical path", mono: false },
+  { k: "Hides", v: "Rates, costs, resource plan", mono: false },
+  { k: "Expires", v: "in 30 days", mono: true },
+  { k: "Opened", v: "4 times, last 23 Sep", mono: true },
+];
+
+const SharePreview = () => (
+  <div className="w-full max-w-115 bg-white border border-slate-200 rounded-xl shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
+    <div className="px-4.5 py-3.5 border-b border-slate-100">
+      <p className="text-[13px] font-bold text-slate-900">
+        Share the programme
+      </p>
+      <p className="mt-0.5 text-[11px] text-slate-500">
+        Read-only, no login required
+      </p>
+    </div>
+    <div className="px-4.5 py-4">
+      <div className="flex gap-2 mb-3">
+        <div className="flex-1 min-w-0 truncate rounded-lg border border-slate-200 px-3 py-2.5 font-mono text-[12px] text-slate-700">
+          lobocon.co/s/blk-a-programme-7f3k2
+        </div>
+        <span className="inline-flex items-center rounded-full bg-slate-900 px-4 py-2 text-[12px] font-semibold text-white">
+          Copy
+        </span>
+      </div>
+      {SHARE_ROWS.map((r) => (
+        <div
+          key={r.k}
+          className="flex items-baseline justify-between gap-4 py-2.5 border-b border-slate-100 last:border-b-0 text-[13px]"
+        >
+          <span className="font-semibold text-slate-700">{r.k}</span>
+          <span
+            className={`text-right font-semibold ${r.mono ? "font-mono" : ""}`}
+          >
+            {r.v}
+          </span>
+        </div>
+      ))}
+      <div className="mt-3.5">
+        <span className="inline-flex items-center rounded-full border border-slate-200 px-4 py-2 text-[12px] font-semibold text-red-700">
+          Revoke link
+        </span>
+      </div>
+    </div>
+  </div>
+);
+
 // ── Before / After ────────────────────────────────────────────────────────────
 
 const BeforeAfter = () => (
@@ -984,6 +1103,20 @@ export default function SchedulingPage() {
                     Book a working session
                   </Link>
                 </motion.div>
+                <motion.div
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate="visible"
+                  custom={0.28}
+                  className="mt-5"
+                >
+                  <Link
+                    href="/planned-vs-actual"
+                    className="text-[14px] font-semibold text-slate-900 underline-offset-4 hover:underline"
+                  >
+                    See planned vs actual
+                  </Link>
+                </motion.div>
               </div>
 
               {/* Hero panel */}
@@ -1114,6 +1247,25 @@ export default function SchedulingPage() {
                   title="MS Project in, no re-typing"
                   body="Import tasks and dependencies from MS Project XML. Replace the schedule or merge into it; progress is preserved by MS Project UID."
                   preview={<ImportPreview />}
+                />
+                <FeatureBlock
+                  label="Variance"
+                  accentDot="bg-red-600"
+                  patternId="sch-feat-4"
+                  icon={<PageIcon />}
+                  title="Planned against actual, on the programme"
+                  body="Baseline dates beside actual dates for every task, variance in days, and the tasks that moved the finish date. The same view your planned vs actual page reads from."
+                  preview={<VariancePreview />}
+                  reverse
+                />
+                <FeatureBlock
+                  label="Share"
+                  accentDot="bg-violet-500"
+                  patternId="sch-feat-5"
+                  icon={<PageIcon />}
+                  title="Shared without a login"
+                  body="A read-only link to the programme for the Engineer or the client. Revoke it when the project closes."
+                  preview={<SharePreview />}
                 />
               </div>
             </Reveal>

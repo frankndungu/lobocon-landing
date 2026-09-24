@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lobocon, Planned vs Actual page</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--ink:#0f172a;--ink2:#334155;--ink3:#64748b;--line:#e2e8f0;--line2:#f1f5f9;--cream:#f5f0e8;--panel:#f8f7f4;--emerald:#10b981;--amber:#f59e0b;--red:#ef4444;--blue:#3b82f6;--mono:'IBM Plex Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Montserrat,sans-serif;color:var(--ink);background:#fff}
+a{color:inherit;text-decoration:none}
+.screen-label{background:var(--ink);color:#fff;font-size:12px;font-weight:600;padding:10px 24px;letter-spacing:.02em}
+.wrap{max-width:1312px;margin:0 auto;padding:0 64px}
+nav.top{height:76px;border-bottom:1px solid var(--line2);display:flex;align-items:center;justify-content:space-between;padding:0 64px;background:#fff}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.4px;color:#1e293b}
+.nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:#1e293b}
+.nav-cta{display:flex;gap:12px;align-items:center}
+.pill{border-radius:999px;padding:10px 22px;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px}
+.pill.dark{background:var(--ink);color:#fff}
+.pill.line{border:1px solid var(--line);color:var(--ink)}
+.hatch{height:28px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background-image:repeating-linear-gradient(-45deg,#f1f5f9 0,#f1f5f9 1px,transparent 0,transparent 50%);background-size:7px 7px}
+.crumb{font-size:12px;color:var(--ink3);padding-top:28px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:36px 0 72px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:20px}
+h1{font-size:56px;line-height:1.03;letter-spacing:-.025em;font-weight:900;margin-bottom:24px}
+h1 span,h2 span{color:var(--ink3)}
+.lede{font-size:17px;line-height:1.6;color:var(--ink2);max-width:520px;margin-bottom:36px}
+.ctas{display:flex;gap:14px;align-items:center}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:40px;position:relative;overflow:hidden}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 24px rgba(15,23,42,.06)}
+section.sec{padding:80px 0}
+.label{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px}
+h2{font-size:48px;line-height:1.03;letter-spacing:-.02em;font-weight:900;max-width:760px;margin-bottom:16px}
+.sub{font-size:16px;color:var(--ink2);max-width:520px;margin-bottom:40px}
+.ba{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.ba>div{padding:32px}
+.ba .before{border-right:1px solid var(--line)}
+.ba .after{background:var(--panel)}
+.ba h4{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ba li{font-size:15px;line-height:1.55;color:var(--ink2);padding:11px 0;border-top:1px solid var(--line2);list-style:none}
+.featwrap{border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.feat{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.feat:last-child{border-bottom:0}
+.feat .copy{padding:48px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}
+.feat.rev .copy{order:2;border-right:0;border-left:1px solid var(--line)}
+.feat .prev{min-height:460px;background:var(--panel);display:flex;align-items:center;justify-content:center;padding:32px;background-image:radial-gradient(#cbd5e1 .8px,transparent .8px);background-size:24px 24px}
+.feat .tag{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px}
+.dot{width:10px;height:10px;border-radius:2px;display:inline-block}
+.feat h3{font-size:26px;line-height:1.15;letter-spacing:-.01em;font-weight:900;margin-bottom:14px}
+.feat p{font-size:15px;line-height:1.6;color:var(--ink2);max-width:440px}
+.faq{display:grid;grid-template-columns:380px 1fr;gap:64px}
+.faq .q{padding:22px 0;border-top:1px solid var(--line)}
+.faq .q:last-child{border-bottom:1px solid var(--line)}
+.faq b{display:block;font-size:17px;margin-bottom:6px}
+.faq p{font-size:15px;line-height:1.6;color:var(--ink2)}
+.cta{background:var(--cream);position:relative;overflow:hidden;text-align:center;padding:110px 32px;border-top:1px solid #e5e0d6}
+.cta h2{margin:0 auto 16px;max-width:700px}
+.cta p{color:var(--ink2);max-width:460px;margin:0 auto 36px;font-size:16px}
+.cta svg.cube{position:absolute;left:0;top:0;bottom:0;height:100%;width:320px;opacity:.55}
+footer{border-top:1px solid var(--line);padding:32px 64px;display:flex;justify-content:space-between;font-size:13px;color:var(--ink2)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+td{padding:11px 12px;border-bottom:1px solid var(--line2);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+.r{text-align:right}
+.mono{font-family:var(--mono)}
+.chip{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:4px 10px;white-space:nowrap}
+.chip.g{background:#ecfdf5;color:#047857;border:1px solid #a7f3d0}
+.chip.a{background:#fffbeb;color:#92400e;border:1px solid #fde68a}
+.chip.r{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}
+.chip.s{background:#f1f5f9;color:#334155;border:1px solid #e2e8f0}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:4px}
+.kv{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--line2);font-size:13px}
+.kv:last-child{border-bottom:0}
+.kv b{font-weight:600;color:var(--ink2)}
+.kv .v{font-family:var(--mono);font-weight:600}
+.ch{padding:14px 18px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ch b{font-size:13px}
+.ch small{font-size:11px;color:var(--ink3);display:block;margin-top:2px}
+.cb{padding:16px 18px}
+@media(max-width:900px){
+.wrap{padding:0 20px}nav.top{padding:0 20px}.nav-links,.nav-cta .pill.line{display:none}
+.hero,.ba,.feat,.faq{grid-template-columns:1fr}.hero{gap:32px;padding:24px 0 48px}
+.feat .copy,.feat.rev .copy{order:0;border-right:0;border-left:0;border-bottom:1px solid var(--line);padding:28px}
+h1{font-size:36px}h2{font-size:30px}.feat .prev{min-height:0;padding:20px}section.sec{padding:48px 0}
+.ctas{flex-direction:column;align-items:stretch}.ba .before{border-right:0;border-bottom:1px solid var(--line)}
+.panel{padding:20px}footer{flex-direction:column;gap:8px;padding:24px 20px}.cta{padding:64px 20px}.cta svg.cube{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="screen-label">lobocon.co/planned-vs-actual, product page shell (app/boq/page.tsx), desktop 1440 and mobile 390</div>
+
+<nav class="top">
+  <a class="logo" href="#"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#1e293b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><polygon points="16,2 28,8 16,14 4,8"/><path d="M4 8v14M16 14v14M28 8v14"/><polygon points="16,16 28,22 16,28 4,22"/></svg>lobocon</a>
+  <div class="nav-links"><span>Platform</span><span>Solutions</span><span>Resources</span><span>Company</span><span>Pilot</span></div>
+  <div class="nav-cta"><span style="font-size:14px;font-weight:500;color:#1e293b">Log in</span><a class="pill line" href="#">WhatsApp us</a><a class="pill dark" href="#">Book a session</a></div>
+</nav>
+
+<div class="wrap">
+  <div class="crumb">Home / Platform / Planned vs Actual</div>
+  <section class="hero">
+    <div>
+      <div class="eyebrow"><svg width="22" height="22" viewBox="0 0 28 28" fill="none" stroke="#64748b" stroke-width="1.2"><rect x="4" y="6" width="20" height="16" rx="2"/><path d="M8 17l4-4 3 3 5-6"/></svg>Planned vs Actual</div>
+      <h1>Planned 80 percent. Actual 72 percent. <span>Know it on Monday, not at month end.</span></h1>
+      <p class="lede">Site measures quantities against every BOQ item each week. Lobocon turns the measurement into earned value, progress and variance on the spot, ties it to the linked programme task, and locks the entry once the PM or QS verifies it for billing.</p>
+      <div class="ctas"><a class="pill dark" href="#">Message us on WhatsApp</a><a class="pill line" href="#">Book a working session</a></div>
+    </div>
+    <div class="panel">
+      <div class="card">
+        <div class="ch"><div><b>Planned vs Actual, Week 18</b><small>Block A superstructure, measured 22 Sep, verified 23 Sep</small></div><span class="chip s">3 items</span></div>
+        <div class="cb">
+          <div style="margin-bottom:18px"><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px"><b>Concrete pours</b><span class="chip a">8 percent behind</span></div><div style="display:grid;grid-template-columns:60px 1fr 44px;gap:10px;align-items:center;font-size:11px;color:var(--ink3)"><span>Planned</span><div class="bar"><i style="width:80%;background:#cbd5e1"></i></div><span class="mono">80%</span><span>Actual</span><div class="bar"><i style="width:72%;background:var(--amber)"></i></div><span class="mono">72%</span></div></div>
+          <div style="margin-bottom:18px"><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px"><b>Block laying</b><span class="chip r">15 percent behind</span></div><div style="display:grid;grid-template-columns:60px 1fr 44px;gap:10px;align-items:center;font-size:11px;color:var(--ink3)"><span>Planned</span><div class="bar"><i style="width:60%;background:#cbd5e1"></i></div><span class="mono">60%</span><span>Actual</span><div class="bar"><i style="width:45%;background:var(--red)"></i></div><span class="mono">45%</span></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px"><b>Steel fixing <span style="color:#047857;font-size:11px;margin-left:6px">Verified</span></b><span class="chip g">4 percent ahead</span></div><div style="display:grid;grid-template-columns:60px 1fr 44px;gap:10px;align-items:center;font-size:11px;color:var(--ink3)"><span>Planned</span><div class="bar"><i style="width:55%;background:#cbd5e1"></i></div><span class="mono">55%</span><span>Actual</span><div class="bar"><i style="width:59%;background:var(--emerald)"></i></div><span class="mono">59%</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="hatch"></div>
+
+<div class="wrap"><section class="sec">
+  <div class="label">The problem</div>
+  <h2>The weekly report is built <span>from memory on Friday.</span></h2>
+  <p class="sub">It is not the site's fault. It is what a spreadsheet forces a site into.</p>
+  <div class="ba">
+    <div class="before"><h4><span class="dot" style="background:var(--red)"></span>Today</h4><ul>
+      <li>The foreman sends photos on WhatsApp</li>
+      <li>The QS re-types quantities into Excel</li>
+      <li>Last week's cumulative is in another file</li>
+      <li>Nobody signs the number off before it is billed</li></ul></div>
+    <div class="after"><h4><span class="dot" style="background:var(--emerald)"></span>With Lobocon</h4><ul>
+      <li>The site engineer enters the measured quantity per BOQ item for the week</li>
+      <li>Cumulative, earned value and percent complete are derived, not typed</li>
+      <li>The PM or QS verifies and the entry locks</li>
+      <li>The weekly report is a rollup, not a rewrite</li></ul></div>
+  </div>
+</section></div>
+
+<div class="hatch"></div>
+
+<div class="wrap"><section class="sec">
+  <div class="label">What it does</div>
+  <h2>Measure once. <span>Everything updates.</span></h2>
+  <p class="sub">Four things the module does with one number from site.</p>
+  <div class="featwrap">
+
+    <div class="feat">
+      <div class="copy"><div class="tag"><span class="dot" style="background:var(--emerald)"></span>Measurement</div><h3>Measure once, everything updates</h3><p>Enter the quantity done this week against a BOQ item. Lobocon derives the cumulative quantity, this period's earned value, cumulative earned value and percent complete, and writes them back to the item. Contract quantity and rate are snapshotted on the entry, so history stays right even if the BOQ changes later.</p></div>
+      <div class="prev"><div class="card" style="width:100%;max-width:520px"><div class="ch"><div><b class="mono">1.1.2</b> <b>Excavate exceeding 1.5 m, not exceeding 3.0 m</b><small>Week 18, 15 to 21 Sep, entered by K. Otieno, Site Agent</small></div><span class="chip a">In progress</span></div><div class="cb">
+        <div class="kv"><b>Measured this period</b><span class="v">134.24 m3</span></div>
+        <div class="kv"><b>Cumulative</b><span class="v">223.24 of 360 m3</span></div>
+        <div class="kv"><b>Contract rate</b><span class="v">KES 1,100</span></div>
+        <div class="kv"><b>Earned this period</b><span class="v" style="color:#047857">KES 147,664</span></div>
+        <div class="kv"><b>Progress</b><span class="v">62%</span></div>
+      </div></div></div>
+    </div>
+
+    <div class="feat rev">
+      <div class="copy"><div class="tag"><span class="dot" style="background:var(--blue)"></span>Verification</div><h3>Verified before it is billed</h3><p>A measurement is a claim until the PM or QS verifies it. Verified entries lock, cannot be deleted, and carry the verifier's name, time and note. That is what goes into the interim certificate.</p></div>
+      <div class="prev"><div class="card" style="width:100%;max-width:520px"><div class="ch"><div><b class="mono">1.1.2</b> <b>Excavate exceeding 1.5 m</b><small>Week 18</small></div><span class="chip g">Verified, locked</span></div><div class="cb">
+        <div class="kv"><b>Measured</b><span class="v">134.24 m3</span></div>
+        <div class="kv"><b>Verified by</b><span style="font-size:13px;font-weight:600">A. Mwangi, QS</span></div>
+        <div class="kv"><b>Verified at</b><span class="v">15 Sep, 11:48</span></div>
+        <div class="kv"><b>Note</b><span style="font-size:13px;color:var(--ink2)">Re-measured with the RE on site</span></div>
+        <div style="margin-top:14px;font-size:12px;color:var(--ink3);display:flex;align-items:center;gap:8px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Cannot be deleted while verified</div>
+      </div></div></div>
+    </div>
+
+    <div class="feat">
+      <div class="copy"><div class="tag"><span class="dot" style="background:var(--amber)"></span>Budget against actual</div><h3>Budget against actual at every level</h3><p>Bill, section and item: budget, actual cost, variance, earned value and CPI, rolled up with progress weighted by value. Where a BOQ item is linked to a programme task, the task's recorded progress is used.</p></div>
+      <div class="prev"><div class="card" style="width:100%;max-width:560px"><table>
+        <thead><tr><th>Bill</th><th class="r">Budget</th><th class="r">Actual</th><th class="r">Variance</th><th class="r">CPI</th></tr></thead>
+        <tbody>
+        <tr><td><b>Bill 1, Earthworks</b></td><td class="r mono">48.2M</td><td class="r mono">41.6M</td><td class="r mono" style="color:#047857">+6.6M</td><td class="r mono">1.08</td></tr>
+        <tr><td><b>Bill 2, Pavement</b></td><td class="r mono">122.9M</td><td class="r mono">118.4M</td><td class="r mono" style="color:#047857">+4.5M</td><td class="r mono">1.02</td></tr>
+        <tr><td><b>Bill 4, Structures</b></td><td class="r mono">96.4M</td><td class="r mono">104.1M</td><td class="r mono" style="color:#b91c1c">7.7M over</td><td class="r mono" style="color:#b91c1c">0.93</td></tr>
+        <tr><td><b>Bill 7, Slope protection</b></td><td class="r mono">18.0M</td><td class="r mono">6.1M</td><td class="r mono">not started</td><td class="r mono">n/a</td></tr>
+        </tbody></table></div></div>
+    </div>
+
+    <div class="feat rev">
+      <div class="copy"><div class="tag"><span class="dot" style="background:var(--red)"></span>Site conditions</div><h3>The reason travels with the number</h3><p>Every period carries site notes and site conditions. Heavy rain on days three and four is recorded against the week it slowed, not remembered at the claims meeting.</p></div>
+      <div class="prev"><div class="card" style="width:100%;max-width:520px"><div class="ch"><div><b>Week 18 conditions</b><small>Entered with the measurement</small></div></div><div class="cb">
+        <div style="font-size:14px;line-height:1.6;color:var(--ink2);padding:12px 14px;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;margin-bottom:12px">Heavy rains days 3 to 4, compaction delayed. Access road impassable Thursday morning.</div>
+        <div class="kv"><b>Working days lost</b><span class="v">1.5</span></div>
+        <div class="kv"><b>Linked programme task</b><span style="font-size:13px;font-weight:600">2.1 Substructure, progress 62%</span></div>
+      </div></div></div>
+    </div>
+
+  </div>
+</section></div>
+
+<div class="hatch"></div>
+
+<div class="wrap"><section class="sec">
+  <div class="faq">
+    <div><div class="label">Questions</div><h2 style="font-size:40px">Before you message.</h2></div>
+    <div>
+      <div class="q"><b>How often do we measure?</b><p>Weekly by default. Biweekly, monthly and custom periods are supported, one entry per item per period.</p></div>
+      <div class="q"><b>Can a measurement exceed the contract quantity?</b><p>No. The entry is rejected. Variations are handled in the BOQ, not by over-measuring.</p></div>
+      <div class="q"><b>Who can verify an entry?</b><p>A PM or QS with edit rights on the BOQ. Verified entries are locked until the PM removes the verification.</p></div>
+    </div>
+  </div>
+</section></div>
+
+<div class="hatch"></div>
+
+<section class="cta">
+  <svg class="cube" viewBox="0 0 280 520" fill="none" preserveAspectRatio="xMaxYMid meet"><polygon points="140,60 240,110 140,160 40,110" fill="none" stroke="#b8b0a4" stroke-width="1.2" stroke-dasharray="5 4"/><polygon points="40,230 40,380 140,430 140,280" fill="none" stroke="#b8b0a4" stroke-width="1.2" stroke-dasharray="5 4"/><polygon points="240,230 240,380 140,430 140,280" fill="none" stroke="#b8b0a4" stroke-width="1.2" stroke-dasharray="5 4"/><polygon points="180,60 240,90 180,120 120,90" fill="#ede8df" stroke="#b8b0a4" stroke-width="1.2"/><polygon points="120,90 120,160 180,190 180,120" fill="#e6e0d6" stroke="#b8b0a4" stroke-width="1.2"/><polygon points="240,90 240,160 180,190 180,120" fill="#ddd7cc" stroke="#b8b0a4" stroke-width="1.2"/></svg>
+  <h2>Stop finding out at month end. <span>Know on Monday.</span></h2>
+  <p>Message us with how many projects you are running. You get a reply the same working day.</p>
+  <a class="pill dark" href="#" style="border-radius:12px;padding:16px 34px">Message us on WhatsApp</a>
+</section>
+
+<footer><span>lobocon</span><span>WhatsApp +254 746 884 254, ndungufrank01@gmail.com</span><span>Lobocon 2026. All rights reserved.</span></footer>
+</body>
+</html>

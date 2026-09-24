@@ -55,9 +55,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.95,
     },
-    // Add these as you ship each page — same tier as the ones above:
-    // { url: "https://lobocon.co/planned-vs-actual", lastModified: new Date(), changeFrequency: "weekly", priority: 0.95 },
-    // { url: "https://lobocon.co/labor", lastModified: new Date(), changeFrequency: "weekly", priority: 0.95 },
+    {
+      url: "https://lobocon.co/planned-vs-actual",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+    {
+      url: "https://lobocon.co/resources",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+    {
+      url: "https://lobocon.co/collaboration",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
 
     // ── Tier 3: Company pages — important but stable ──────────────────────────
     {

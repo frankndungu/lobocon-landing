@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
+import Link from "next/link";
 
 // ── SVG Icons ────────────────────────────────────────────────────────────────
 
@@ -239,10 +240,18 @@ interface SubLeftProps {
   category: string;
   title: string;
   desc: string;
+  href: string;
   tabs: SubTabItem[];
 }
 
-const SubLeft = ({ accent, category, title, desc, tabs }: SubLeftProps) => (
+const SubLeft = ({
+  accent,
+  category,
+  title,
+  desc,
+  href,
+  tabs,
+}: SubLeftProps) => (
   <div className="flex flex-col justify-between p-6 sm:p-8 lg:p-12 lg:w-[40%] shrink-0 border-b lg:border-b-0 lg:border-r border-slate-100">
     <div>
       <div className="flex items-center gap-2 mb-6">
@@ -257,12 +266,12 @@ const SubLeft = ({ accent, category, title, desc, tabs }: SubLeftProps) => (
       <p className="text-[15px] text-slate-900 leading-relaxed mb-8 max-w-sm">
         {desc}
       </p>
-      <a
-        href="#"
+      <Link
+        href={href}
         className="inline-flex items-center gap-2 text-[13px] font-semibold text-slate-900 hover:text-slate-900 transition-colors mb-10"
       >
         <LearnMoreIcon /> Learn more
-      </a>
+      </Link>
     </div>
     <div className="flex items-center gap-5 flex-wrap">
       {tabs.map((t) => (
@@ -309,12 +318,9 @@ const StoryBar = ({
     >
       Customer Story
     </span>
-    <a
-      href="#"
-      className={`text-[11px] font-semibold ${textColor} hover:text-white transition-colors truncate`}
-    >
+    <span className={`text-[11px] font-semibold ${textColor} truncate`}>
       {text}
-    </a>
+    </span>
   </div>
 );
 
@@ -1633,6 +1639,7 @@ export default function Product() {
               category="Commercial"
               title="Your bill of quantities, live."
               desc="Import, map, and track every line item against actual site progress. BOQ updates as work happens — no more end-of-month surprises."
+              href="/boq"
               tabs={commercialTabs}
             />
             <div
@@ -1701,6 +1708,7 @@ export default function Product() {
               category="Commercial"
               title="Know your CPI before it's too late."
               desc="Real-time CPI and SPI from live BOQ progress. Catch overruns at work-package level — not the end-of-month meeting."
+              href="/earned-value"
               tabs={commercialTabs}
             />
             <div
@@ -1755,6 +1763,7 @@ export default function Product() {
               category="Commercial"
               title="Never get caught short on site."
               desc="Forecast inflows, outflows, and working capital across every active project. See your cash position 90 days forward."
+              href="/cash-flow"
               tabs={commercialTabs}
             />
             <div
@@ -1818,6 +1827,7 @@ export default function Product() {
               category="Execution"
               title="Your baseline. Your critical path."
               desc="Import from MS Project or build in Lobocon. CPM auto-calculates float and critical path. Set baselines, track slippage, keep every trade on schedule."
+              href="/scheduling"
               tabs={executionTabs}
             />
             <div
@@ -1860,6 +1870,7 @@ export default function Product() {
               category="Execution"
               title="Daily variance. No surprises."
               desc="Compare daily progress against your baseline at work-package level. Surface slippage before it compounds."
+              href="/planned-vs-actual"
               tabs={executionTabs}
             />
             <div
@@ -1902,6 +1913,7 @@ export default function Product() {
               category="Execution"
               title="Every worker. Every hour."
               desc="Track daily headcount, allocation per trade, and overtime against your project labor plan. Know your labor cost in real time — not at month-end."
+              href="/resources"
               tabs={executionTabs}
             />
             <div
@@ -1953,6 +1965,7 @@ export default function Product() {
               category="Reporting"
               title="Your budget, locked and live."
               desc="Set your cost baseline, configure contingency, and see your total project budget build in real time. One source of truth for your finance team."
+              href="/reporting"
               tabs={reportingTabs}
             />
             <div
@@ -2055,6 +2068,7 @@ export default function Product() {
               category="Reporting"
               title="Everyone sees the same numbers."
               desc="Role-based access for your whole team — QS, PM, site foreman, finance, and client. One source of truth, always current."
+              href="/collaboration"
               tabs={reportingTabs}
             />
             <div
@@ -2109,6 +2123,7 @@ export default function Product() {
               category="Reporting"
               title="Equipment and materials, tracked."
               desc="Track utilisation, delivery status, and resource allocation across all active sites. Know what's idle before it costs you."
+              href="/resources"
               tabs={reportingTabs}
             />
             <div

@@ -31,7 +31,7 @@ export default function StructuredData() {
       "Cash Flow Forecasting",
       "Earned Value Management",
       "Construction Scheduling",
-      "Labor Tracking",
+      "Resource Planning",
       "Collaboration and Role-based Access",
       "Financial Reporting",
     ],

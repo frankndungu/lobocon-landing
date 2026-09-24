@@ -58,7 +58,10 @@ const PLATFORM: FooterItem[] = [
   { label: "Earned Value", href: "/earned-value" },
   { label: "Cash Flow", href: "/cash-flow" },
   { label: "Scheduling", href: "/scheduling" },
+  { label: "Planned vs Actual", href: "/planned-vs-actual" },
+  { label: "Resources", href: "/resources" },
   { label: "Reporting", href: "/reporting" },
+  { label: "Collaboration", href: "/collaboration" },
   { label: "RFIs", href: "/rfis" },
   { label: "Documents", href: "/documents" },
 ];
